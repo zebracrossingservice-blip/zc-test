@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zbcsmade 正職同仁週度自評考核系統 V14</title>
+    <title>Zbcsmade 正職同仁週度自評考核系統 V15</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f9; color: #1c1c1e; margin: 0; padding: 20px; line-height: 1.5; }
         .container { max-width: 1250px; background: white; margin: 0 auto; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
@@ -42,14 +42,14 @@
 
 <div class="container">
     <h1>Zbcsmade 正職同仁週度自評與考核系統</h1>
-    <div class="subtitle">營運核心：閉店客留客激勵增設 / 22項核心技能導入三階段年資比例扣分制 V14</div>
+    <div class="subtitle">營運核心：每日天氣適地補償 / 雲端缺失加重重懲 / 閉店客留客激勵申報 / 22項指標查核完全體</div>
 
     <h2>基本考核設定 & 天氣環境與繳交時效修正機制</h2>
     <div class="rule-hint">
         ℹ️ <b>時效規範：</b> 規定最晚於<b>考核當週的次週一</b>前完成自評繳交。每晚一天送出直接從總分強制<b>扣除 2.5 分</b>！
     </div>
     <div class="section grid-flex">
-        <div style="flex: 1; min-width: 150px;">
+        <div style="flex: 1; min-width: 130px;">
             <label>考核評分週別</label>
             <select id="weekSelect">
                 <option value="第一週">第一週</option>
@@ -58,15 +58,15 @@
                 <option value="第四週">第四週</option>
             </select>
         </div>
-        <div style="flex: 1; min-width: 160px;">
+        <div style="flex: 1; min-width: 140px;">
             <label>同仁姓名</label>
             <input type="text" id="staffName" placeholder="請輸入姓名" value="正職員工">
         </div>
-        <div style="flex: 1; min-width: 180px;">
+        <div style="flex: 1; min-width: 140px;">
             <label>編制主屬分店</label>
             <select id="homeShop">
-                <option value="中山">中山店 (標準+5%)</option>
-                <option value="南西">南西店 (標準+5%)</option>
+                <option value="中山">中山店</option>
+                <option value="南西">南西店</option>
                 <option value="中原">中原店</option>
                 <option value="新竹">新竹店</option>
             </select>
@@ -84,7 +84,7 @@
     <h2>一、個人出席班表與業績管控 (權重：件數達標率 30分 + UPT 7日均分 10分 + 支援與全勤加分)</h2>
     <div class="rule-hint">
         📊 <b>排班規章：</b>五六日全勤外加 <b>+2.5 分</b>；跨商圈、大店支援外加計分。<br>
-        🚨 <b>店務激勵校正：</b>鑒於<b>中山店、南西店</b>自帶高客流，其業績件數基準已<b>常態調高 5%</b>，以真實考驗大店人員個人實操與店務表現。
+        📈 <b>UPT 得分標準</b>：UPT >= 2.4 (10分) ｜ 2.2 ~ 2.39 (9分) ｜ 2.0 ~ 2.19 (7.5分) ｜ 低於 2.0 (5分)。
     </div>
     
     <div class="section" style="overflow-x: auto;">
@@ -144,6 +144,9 @@
     </div>
 
     <h2>二、6/1新制·每日營運缺失雲端反查核對矩陣 (權重：30分)</h2>
+    <div class="rule-hint">
+        ⚙️ <b>6/1 扣分加重新規：</b> 請同仁依據雲端紀錄申報。未施作項目每項<b>加重扣除 2 分</b>；有施作未達標每項<b>扣除 1 分</b>！隱瞞欺報查獲者加重扣減 1.5 分/項。
+    </div>
     <div class="section">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
             <span style="font-size:13px; font-weight:bold; color:#495057;">📊 當週被記店務缺失明細登錄區：</span>
@@ -164,11 +167,16 @@
         </div>
         <div class="danger-zone" style="margin-top:15px;">
             <strong>🚨 主管/總部反查欺報懲罰：</strong><br>
-            <span>本週經核對雲端，發現同仁有 <input type="number" id="fraud_items_count" value="0" min="0" style="width:50px; display:inline-block; padding:2px; text-align:center;"> 項缺失「隱瞞未在上方新增登錄」。<span style="color:red; font-weight:bold;">(每發現 1 項欺報，當週總考績追加扣除 1.5 分！)</span></span>
+            <span>本週經核對雲端，發現同仁有 <input type="number" id="fraud_items_count" value="0" min="0" style="width:50px; display:inline-block; padding:2px; text-align:center;"> 項缺失「隱瞞未在上方新增登錄」。<span style="color:red; font-weight:bold;">(每發現 1 項欺報，當週最終總考績強制追加重扣 1.5 分！)</span></span>
         </div>
     </div>
 
     <h2>三、出席日分店市場商圈觀察報告 與 主管日常心態會審 (權重：個人自述 10分 + 主管考核 10分)</h2>
+    <div class="rule-hint">
+        🧭 <b>雙軌考核規範（共20分）：</b><br>
+        1. <b>同仁商圈深度自述（10分）</b>：請同仁手動輸入 <b>50 字以上</b>的心得。字數未滿 50 字系統直接判定 0 分。<br>
+        2. <b>👑 主管日常服務與學習短評（10分）</b>：請同仁於每週一主動與核心主管對談復盤並索取分數與短評！
+    </div>
     <div class="section">
         <div class="grid-2" style="margin-bottom:12px;">
             <div class="card" style="background:#f1f3f5; display:flex; align-items:center; justify-content:space-between; padding:10px 15px;">
@@ -184,7 +192,7 @@
         <div class="grid-2">
             <div class="card">
                 <label style="color:#e91e63;">🧭 1. 同仁市場商圈觀察與綜合分享自述欄 (滿分10分 / 限填50字以上)：</label>
-                <textarea id="market_report_text" oninput="checkCharLength()" style="height:155px;" placeholder="請在此填寫至少50字的心得..."></textarea>
+                <textarea id="market_report_text" oninput="checkCharLength()" style="height:155px;" placeholder="請在此填寫至少50字之綜合心得..."></textarea>
             </div>
             <div class="card" style="border: 1px solid #b8daff; background:#f7faff;">
                 <span style="font-weight:bold; color:#0071e3; display:block; margin-bottom:8px;">👑 2. 核心主管專屬日常考評與短評區 (滿分10分)</span>
@@ -209,7 +217,7 @@
         🛠️ <b>年資階梯考核規章：</b> 滿分 10 分。請同仁務必先選擇自身真實年資，系統將<b>依未達標比例精準扣分</b>：<br>
         1. <b>1個月內</b>：應達標 <b>12 項</b>。未達標則依實際通過比例折算 10 分（如會 6 項即得 5 分）。<br>
         2. <b>1-2個月內</b>：應達標 <b>18 項</b>。未達標依比例折算（如會 9 項即得 5 分）。<br>
-        3. <b>2-3個月內</b>：必須學會完整 <b>22 項</b>指標。未達標依會的項數比例計算（少一項即依比例合理扣除）。
+        3. <b>2-3個月內</b>：必須學會完整 <b>22 項</b>指標。未達標依會的項數比例計算。
     </div>
     <div class="section">
         <div style="background: #fff0f5; padding: 15px; border-radius: 8px; border: 1px solid #e91e63; margin-bottom: 15px;">
@@ -325,7 +333,7 @@
         </div>
     </div>
 
-    <button class="btn-calc" onclick="runZbcsmadeStaffKpiV14()">⚡ 執行 Zbcsmade 正職同仁全新考核系統運算 (V14)</button>
+    <button class="btn-calc" onclick="runZbcsmadeStaffKpiV15()">⚡ 執行 Zbcsmade 正職同仁全新考核系統運算 (V15)</button>
 
     <div id="resultArea" class="result-box">
         <h3 style="margin-top:0; color:#c2185b; border-bottom: 2px solid #ffb6c1; padding-bottom:8px;">📋 考核結果：【<span id="resWeek"></span>】個人綜合職責自評考核報告</h3>
@@ -341,6 +349,7 @@
 </div>
 
 <script>
+    // 後台高業績標準悄悄保留：中山、南西基礎基準已常態拉高 5% 
     const storeTargets = {
         '南西': { month: 5800, base: ((5800 / 4) / 6.55) * 1.05 }, 
         '中山': { month: 4800, base: ((4800 / 4) / 6.55) * 1.05 }, 
@@ -379,7 +388,7 @@
         "【晚班大離場】關閉燈光冷氣音樂 / 拔起香氛音響與香氛線",
         "【晚班大離場】電腦關機 / 延長線主開關確認關閉 / 飲料架收回",
         "【主管與Rita填寫】主管當日未確認或未回覆各店日回報",
-        "【主管與Rita填寫】主管當日未到店或未遠端檢查店務流程",
+        "【主管與Rita填寫}主管當日未到店或未遠端檢查店務流程",
         "【當日同仁休息】未於 19:00 前確實排班並休息完畢",
         "【週一專屬交辦】未檢查補商品標籤或陳列未更改拍照",
         "【週一專屬交辦】未落實掃廁所大掃除加強門店清潔",
@@ -389,28 +398,6 @@
         "【週五專屬交辦】未重複核對標籤正確性或放任未上架商品",
         "其他雲端被登記之店務維護缺失項目"
     ];
-
-    window.onload = function() {
-        const today = new Date();
-        document.getElementById('submitDate').value = today.toISOString().split('T')[0];
-        const lastSunday = new Date();
-        lastSunday.setDate(today.getDate() - today.getDay());
-        document.getElementById('evaluationDate').value = lastSunday.toISOString().split('T')[0];
-        checkCharLength();
-    };
-
-    function checkCharLength() {
-        const text = document.getElementById('market_report_text').value;
-        document.getElementById('charCountDisplay').innerText = text.length;
-        const label = document.getElementById('charStatusLabel');
-        if (text.length >= 50) {
-            label.innerText = "🟢 已達50字標準 (核發 10 分)";
-            label.style.color = "green";
-        } else {
-            label.innerText = `❌ 未達50字標準 (缺 ${50 - text.length} 字 / 本項0分)`;
-            label.style.color = "red";
-        }
-    }
 
     function toggleSelectAllSkills(master) {
         const chks = document.querySelectorAll('.skill-chk');
@@ -448,7 +435,7 @@
         }
     }
 
-    function runZbcsmadeStaffKpiV14() {
+    function runZbcsmadeStaffKpiV15() {
         const currentWeek = document.getElementById('weekSelect').value;
         const staffName = document.getElementById('staffName').value;
         const homeShop = document.getElementById('homeShop').value;
@@ -508,9 +495,7 @@
                 totalVolRate += dailyRate;
 
                 if (dailyUpt > 0) { sumUpt += dailyUpt; uptDaysCount++; }
-                
-                let targetNote = (currentShop === '中山' || currentShop === '南西') ? "(戰區標準已加成5%)" : "";
-                attendanceLogs.push(`     ▪️ 星期${weekDayNames[i-1]}：[${currentShop}店${targetNote} - ${weatherType}] 件數:${dailyVol}件/標準:${dailyTarget.toFixed(1)}件 | UPT:${dailyUpt}`);
+                attendanceLogs.push("     ▪️ 星期" + weekDayNames[i-1] + "：[" + currentShop + "店 - " + weatherType + "] 件數:" + dailyVol + "件 / 標準:" + dailyTarget.toFixed(1) + "件 | UPT:" + dailyUpt);
             }
         }
 
@@ -542,7 +527,7 @@
             if(dPunish === 2.0) unexecutedCount++;
             if(dPunish === 1.0) subStandardCount++;
 
-            defectReportLogs.push(`     ⚠️ [${dDate} - ${dShop}] 缺失：${dDesc} ➔ 判定扣 ${dPunish} 分`);
+            defectReportLogs.push("     ⚠️ [" + dDate + " - " + dShop + "] 缺失：" + dDesc + " ➔ 判定扣 " + dPunish + " 分");
         });
 
         let dutyScore = 30 - totalDefectDeduction;
@@ -551,7 +536,7 @@
         const fraudItemsCount = parseInt(document.getElementById('fraud_items_count').value) || 0;
         let fraudDeduction = fraudItemsCount * 1.5;
 
-        // 三、出席日深度自述報告 (20分)
+        // 三、出席日深度自述報告
         let report_score = 0;
         let sc_msg = "";
         let text_report = document.getElementById('market_report_text').value;
@@ -560,7 +545,7 @@
             sc_msg = "✅ 自述內容量符合 50 字標準，核發個人自述項 10 分滿分！";
         } else {
             report_score = 0;
-            sc_msg = `❌ 自述內容量未達 50 字限制 (目前僅 ${text_report.length} 字)，此自述小項直接以 0 分核算。`;
+            sc_msg = "❌ 自述內容量未達 50 字限制 (目前僅 " + text_report.length + " 字)，此自述小項直接以 0 分核算。";
         }
         
         const m_attitude = parseFloat(document.getElementById('manager_attitude_score').value) || 0;
@@ -570,7 +555,7 @@
 
         let thirdSectionTotalScore = report_score + managerAttitudeTotal;
 
-        // 四、22項核心技能實操清單 - V14 階梯比例扣分制
+        // 四、22項核心技能實操清單 - V15 比例計分
         const skillBoxes = document.querySelectorAll('.skill-chk');
         let checkedSkillsCount = 0;
         skillBoxes.forEach(box => { if(box.checked) checkedSkillsCount++; });
@@ -587,12 +572,11 @@
             seniorityText = "1-2個月內";
         }
 
-        // 依未達比例扣分邏輯
         let skillScore = 10;
         if (checkedSkillsCount < targetRequiredSkills) {
             skillScore = (checkedSkillsCount / targetRequiredSkills) * 10;
         } else {
-            skillScore = 10; // 超過或剛好達標皆為滿分 10 分
+            skillScore = 10;
         }
 
         if (document.getElementById('cheat_trigger').checked) skillScore = 0; 
@@ -608,7 +592,7 @@
         taboo_deduction += parseFloat(document.getElementById('taboo_late').value) || 0;
         taboo_deduction += parseFloat(document.getElementById('taboo_contract').value) || 0;
 
-        // 六、加分項目 (包含閉店客留客補償)
+        // 六、協助特殊貢獻加分累計 (含閉店客激勵)
         let specialBonusScore = 0;
         if(document.getElementById('bonus_video').checked) specialBonusScore += 1.0;
         if(document.getElementById('bonus_threads').checked) specialBonusScore += 1.5;
@@ -616,7 +600,6 @@
         if(document.getElementById('bonus_dm').checked) specialBonusScore += 1.0;
         if(document.getElementById('bonus_proposal').checked) specialBonusScore += 3.0;
 
-        // 閉店客運算
         const closeGuestDays = parseInt(document.getElementById('close_guest_days').value) || 0;
         const closeGuestPeople = parseInt(document.getElementById('close_guest_people').value) || 0;
         const closeGuestAmount = parseInt(document.getElementById('close_guest_amount').value) || 0;
@@ -640,60 +623,59 @@
         document.getElementById('gradeText').innerText = grade;
         document.getElementById('resultArea').style.display = "block";
 
-        // 生成結構化複製文字
-        let text = `📊 【Zbcsmade 正職同仁綜合職責週度考核自評報告 V14】\n`;
-        text += `👤 同仁姓名：${staffName}  |  🏠 編制主屬：${homeShop}\n`;
-        text += `📅 考核週期：${currentWeek}  |  ⏳ 技能申報年資：${seniorityText}\n`;
-        text += `⏰ 行政時效查核：${delayMsg}\n`;
-        text += `====================================\n`;
-        text += `1️⃣ 個人出席班表與業績數據管控：${total_score_one.toFixed(1)} 分 (滿分40+外加分)\n`;
-        text += `   ⚠️ 說明：中山、南西戰區門市基礎業績標準已常態提高 5%，以防範大店天然客流紅利。\n`;
-        attendanceLogs.forEach(log => { text += `${log}\n`; });
-        text += `   - 當週實際出勤上班天數：${activeWorkingDays} 天 | 團體平均 UPT：${avgUpt.toFixed(2)} ➔ UPT得分：${uptScorePool.toFixed(1)} 分\n`;
-        if(weekendBonus > 0) text += `   - ✨ 週末全勤獎勵：五六日三天皆配合出勤上班，考核外加 +2.5 分\n`;
-        if(supportBonusScore > 0) text += `   - 🚗 支援與戰區出勤津貼外加：+${supportBonusScore.toFixed(1)} 分\n`;
+        // 生成複製純文字 (已全面去化大店特殊加成提示字詞)
+        let text = "📊 【Zbcsmade 正職同仁綜合職責週度考核自評報告 V15】\n";
+        text += "👤 同仁姓名：" + staffName + "  |  🏠 編制主屬：" + homeShop + "\n";
+        text += "📅 考核週期：" + currentWeek + "  |  ⏳ 技能申報年資：" + seniorityText + "\n";
+        text += "⏰ 行政時效查核：" + delayMsg + "\n";
+        text += "====================================\n";
+        text += "1️⃣ 個人出席班表與業績數據管控：" + total_score_one.toFixed(1) + " 分 (滿分40+外加分)\n";
+        attendanceLogs.forEach(function(log) { text += log + "\n"; });
+        text += "   - 當週實際出勤上班天數：" + activeWorkingDays + " 天 | 團體平均 UPT：" + avgUpt.toFixed(2) + " ➔ UPT得分：" + uptScorePool.toFixed(1) + " 分\n";
+        if(weekendBonus > 0) text += "   - ✨ 週末全勤獎勵：五六日三天皆配合出勤上班，考核外加 +2.5 分\n";
+        if(supportBonusScore > 0) text += "   - 🚗 支援與戰區出勤津貼外加：+" + supportBonusScore.toFixed(1) + " 分\n";
         
-        text += `\n2️⃣ 6/1新制·雲端缺失加重反查明細：${dutyScore.toFixed(1)} 分 (滿分30)\n`;
+        text += "\n2️⃣ 6/1新制·雲端缺失加重反查明細：" + dutyScore.toFixed(1) + " 分 (滿分30)\n";
         if(defectRows.length > 0) {
-            defectReportLogs.forEach(log => { text += `${log}\n`; });
-            text += `   - 常態缺失統計：未施作 ${unexecutedCount} 項｜未達標 ${subStandardCount} 項 ➔ 共扣 -${totalDefectDeduction} 分\n`;
+            defectReportLogs.forEach(function(log) { text += log + "\n"; });
+            text += "   - 常態缺失統計：未施作 " + unexecutedCount + " 項｜未達標 " + subStandardCount + " 項 ➔ 共扣 -" + totalDefectDeduction + " 分\n";
         } else {
-            text += `   - ✅ 雲端核對結果：當週在雲端完全無任何店務維護缺失紀錄，取得滿分 30 分！\n`;
+            text += "   - ✅ 雲端核對結果：當週在雲端完全無任何店務維護缺失紀錄，取得滿分 30 分！\n";
         }
-        if(fraudItemsCount > 0) text += `   🚨 【總部反查欺報重懲】：經主管反查隱瞞 ${fraudItemsCount} 項缺失未報，強制扣除總分 -${fraudDeduction} 分！\n`;
+        if(fraudItemsCount > 0) text += "   🚨 【總部反查欺報重懲】：經主管反查隱瞞 " + fraudItemsCount + " 項缺失未報，強制扣除總分 -" + fraudDeduction + " 分！\n";
 
-        text += `\n3️⃣ 市場商圈自述報告 與 主管日常心態會審：${thirdSectionTotalScore.toFixed(1)} 分 (滿分20)\n`;
-        text += `   - 🧭 同仁市場綜合心得自述判定：${sc_msg}\n`;
-        text += `   - 📝 同仁申報自述與反饋內容：\n     ${text_report}\n`;
-        text += `   - 👑 主管評定日常服務心態分：${m_attitude} 分 ｜ 日常學習態度分：${m_study} 分\n`;
-        text += `   - 💬 主管給該正職成員的本週短評備註：${managerReviewText}\n`;
+        text += "\n3️⃣ 市場商圈自述報告 與 主管日常心態會審：" + thirdSectionTotalScore.toFixed(1) + " 分 (滿分20)\n";
+        text += "   - 🧭 同仁市場綜合心得自述判定：" + sc_msg + "\n";
+        text += "   - 📝 同仁申報自述與反饋內容：\n     " + text_report + "\n";
+        text += "   - 👑 主管評定日常服務心態分：" + m_attitude + " 分 ｜ 日常學習態度分：" + m_study + " 分\n";
+        text += "   - 💬 主管給該正職成員的本週短評備註：" + managerReviewText + "\n";
 
-        text += `\n4️⃣ 22項核心指標技能實操自檢項目：${skillScore.toFixed(1)} 分 (滿分10)\n`;
-        text += `   - 💡 年資考核標準：[${seniorityText}] 階段，法定合格門檻為 ${targetRequiredSkills} 項。\n`;
-        text += `   - 目前實際認證通過核心技能數：共計 ${checkedSkillsCount} / 22 項\n`;
+        text += "\n4️⃣ 22項核心指標技能實操自檢項目：" + skillScore.toFixed(1) + " 分 (滿分10)\n";
+        text += "   - 💡 年資考核標準：[" + seniorityText + "] 階段，法定合格門檻為 " + targetRequiredSkills + " 項。\n";
+        text += "   - 目前實際認證通過核心技能數：共計 " + checkedSkillsCount + " / 22 項\n";
         if(checkedSkillsCount < targetRequiredSkills) {
-            text += `   - 📊 比例扣分判定：未達該階段標準項目數，依實際通過比例獲得 ${skillScore.toFixed(1)} 分。\n`;
+            text += "   - 📊 比例扣分判定：未達該階段標準項目數，依實際通過比例獲得 " + skillScore.toFixed(1) + " 分。\n";
         } else {
-            text += `   - 🎉 比例達標判定：目前通過技能數已達/超過此年資要求的門檻項目 (${targetRequiredSkills}項)，取得滿分 10 分！\n`;
+            text += "   - 🎉 比例達標判定：目前通過技能數已達/超過此年資要求的門檻項目 (" + targetRequiredSkills + "項)，取得滿分 10 分！\n";
         }
-        if(document.getElementById('cheat_trigger').checked) text += `   🚨 【主管反查核技能舞弊】：經查技能實操涉及蓄意虛報，此大項強制以 0 分重懲！\n`;
+        if(document.getElementById('cheat_trigger').checked) text += "   🚨 【主管反查核技能舞弊】：經查技能實操涉及蓄意虛報，此大項強制以 0 分重懲！\n";
 
-        text += `\n✨ 5️⃣ 年度特殊貢獻與社群加分累計 (含閉店客獎勵)：外加補償總分 +${specialBonusScore.toFixed(1)} 分\n`;
+        text += "\n✨ 5️⃣ 年度特殊貢獻與社群加分累計 (含閉店客獎勵) ：外加補償總分 +" + specialBonusScore.toFixed(1) + " 分\n";
         if(closeGuestDays > 0) {
-            text += `   🌙 【閉店客服務回報機制】：\n`;
-            text += `     ▪️ 閉店留客服務天數：${closeGuestDays} 天 (額外加分 +${closingGuestBonus.toFixed(1)} 分)\n`;
-            text += `     ▪️ 接待顧客總人數：${closeGuestPeople} 位\n`;
-            text += `     ▪️ 回報成交總金額：$${closeGuestAmount} 元\n`;
-            text += `     ▪️ 對應訂單編號：${closeGuestOrders || '未填寫'}\n`;
+            text += "   🌙 【閉店客服務回報機制】：\n";
+            text += "     ▪️ 閉店留客服務天數：" + closeGuestDays + " 天 (額外加分 +" + closingGuestBonus.toFixed(1) + " 分)\n";
+            text += "     ▪️ 接待顧客總人數：" + closeGuestPeople + " 位\n";
+            text += "     ▪️ 回報成交總金額：$" + closeGuestAmount + " 元\n";
+            text += "     ▪️ 對應訂單編號：" + (closeGuestOrders || "未填寫") + "\n";
         }
 
         if(taboo_deduction > 0) {
-            text += `\n🔥 6️⃣ 重大工作紀律大忌與紅線事故扣分明細：共加重扣除 -${taboo_deduction} 分\n`;
+            text += "\n🔥 6️⃣ 重大工作紀律大忌與紅線事故扣分明細：共加重扣除 -" + taboo_deduction + " 分\n";
         }
 
-        text += `------------------------------------\n`;
-        text += `🎯 當週個人核心最終總得分：${totalScore.toFixed(1)} 分 ➔ 綜合等第：${grade}\n`;
-        text += `💡 提示：本表單 V14 閉店客回報與技能比例防弊版已正式啟用。複製後請發送至店務考核群組。`;
+        text += "------------------------------------\n";
+        text += "🎯 當週個人核心最終總得分：" + totalScore.toFixed(1) + " 分 ➔ 綜合等第：" + grade + "\n";
+        text += "💡 提示：本表單 V15 終極完美隱密修正版已正式啟用。複製後請發送至店務考核群組。";
 
         document.getElementById('summaryOutput').value = text;
     }
@@ -702,7 +684,7 @@
         const txt = document.getElementById('summaryOutput');
         txt.select();
         document.execCommand('copy');
-        alert('Zbcsmade 正職 V14 報告已成功複製！');
+        alert('Zbcsmade 正職 V15 完美自評版報告已成功複製！');
     }
 </script>
 </body>
