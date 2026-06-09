@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zbcsmade 正職同仁週度自評考核系統 V9</title>
+    <title>Zbcsmade 正職同仁週度自評考核系統 V11</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f9; color: #1c1c1e; margin: 0; padding: 20px; line-height: 1.5; }
         .container { max-width: 1250px; background: white; margin: 0 auto; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
@@ -14,8 +14,10 @@
         .section { background: #fdfdfd; padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid #e5e5ea; }
         .grid-flex { display: flex; flex-wrap: wrap; gap: 15px; }
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; color: #333; }
+        .input-desc { font-size: 11px; color: #666; margin-bottom: 6px; }
         input[type="number"], select, input[type="text"], textarea, input[type="date"] { width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 13px; }
         input[type="checkbox"] { transform: scale(1.2); margin-right: 4px; vertical-align: middle; cursor: pointer; }
         table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
@@ -25,20 +27,21 @@
         .btn-calc { background-color: #e91e63; color: white; border: none; padding: 16px; font-size: 18px; font-weight: bold; border-radius: 8px; width: 100%; cursor: pointer; margin-top: 25px; box-shadow: 0 4px 12px rgba(233,30,99,0.3); }
         .btn-calc:hover { background-color: #c2185b; }
         .result-box { margin-top: 30px; padding: 25px; border-radius: 12px; display: none; background-color: #fff0f5; border: 1px solid #ffc0cb; color: #c2185b; }
-        .summary-text { width: 100%; height: 420px; font-family: monospace; background: #212529; color: #f8f9fa; padding: 15px; border-radius: 6px; margin-top: 10px; font-size: 13px; line-height: 1.6; }
+        .summary-text { width: 100%; height: 450px; font-family: monospace; background: #212529; color: #f8f9fa; padding: 15px; border-radius: 6px; margin-top: 10px; font-size: 13px; line-height: 1.6; }
         .btn-copy { background-color: #4caf50; color: white; border: none; padding: 12px; font-size: 15px; font-weight: bold; border-radius: 6px; width: 100%; cursor: pointer; margin-top: 8px; }
         .danger-zone { background: #fff5f5; border: 1px dashed #ff3b30; padding: 12px; border-radius: 6px; color: #d32f2f; font-size: 12px; margin-top: 8px; }
         .btn-add-item { background-color: #0071e3; color: white; border: none; padding: 8px 16px; font-size: 13px; font-weight: bold; border-radius: 6px; cursor: pointer; }
         .btn-row-del { background-color: #ff3b30; color: white; border: none; padding: 6px 10px; font-size: 12px; border-radius: 4px; cursor: pointer; }
         .skills-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin-top: 10px; }
         .skill-item { font-size: 13px; font-weight: 500; display: flex; align-items: center; }
+        .bonus-zone { background: #f0f4c3; border: 1px solid #d4e157; padding: 15px; border-radius: 8px; color: #33691e; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Zbcsmade 正職同仁週度自評與考核系統</h1>
-    <div class="subtitle">營運核心：每日天氣適地補償 / 雲端缺失加重重懲 / 南西高壓出勤加碼 / 22項核心指標查核</div>
+    <div class="subtitle">營運核心：每日天氣適地補償 / 雲端缺失加重重懲 / 紀律大忌重罰 / 22項實操與特貢加分完全體</div>
 
     <h2>基本考核設定 & 天氣環境與繳交時效修正機制</h2>
     <div class="rule-hint">
@@ -79,11 +82,8 @@
 
     <h2>一、個人出席班表與業績管控 (權重：件數達標率 30分 + UPT 7日均分 10分 + 支援與全勤加分)</h2>
     <div class="rule-hint">
-         Bars <b>排班與南西高壓出勤獎勵規章（最新精準修正版）：</b><br>
-        1. <b>五六日全勤獎勵</b>：五、六、日三天皆有配合排班出席者，考核外加 <b>+2.5 分</b>。<br>
-        2. <b>👑 中山南西本是一家·南西大店出勤加碼</b>：只要同仁的主屬編制是<b>「中山店」或「南西店」</b>，只要當天在<b>南西店</b>上班出勤，每日直接外加 <b>+0.5 分</b>（作為高壓一級戰區的日常出勤獎勵）。<br>
-        3. <b>🚗 跨商圈支援津貼</b>：中原、新竹據點的同仁，若跨縣市、跨遠程商圈前來其餘分店支援，每日外加 <b>+1 分</b>。<br>
-        4. <b>📈 UPT 階梯制得分標準</b>：UPT >= 2.4 (10分) ｜ 2.2 ~ 2.39 (9分) ｜ 2.0 ~ 2.19 (7.5分) ｜ 低於 2.0 (5分)。
+         Bars <b>排班規章：</b>五六日全勤外加 <b>+2.5 分</b>；中山南西編制同仁於南西大店出勤每日外加 <b>+0.5 分</b>；其餘縣市跨商圈支援每日外加 <b>+1 分</b>。<br>
+        📈 <b>UPT 得分標準</b>：UPT >= 2.4 (10分) ｜ 2.2 ~ 2.39 (9分) ｜ 2.0 ~ 2.19 (7.5分) ｜ 低於 2.0 (5分)。
     </div>
     
     <div class="section" style="overflow-x: auto;">
@@ -95,11 +95,14 @@
             </thead>
             <tbody>
                 <tr>
-                    <td style="background:#f8f9fa; font-weight:bold;">1. 當日有出席</td>
-                    <td><input type="checkbox" id="attend_1" checked></td><td><input type="checkbox" id="attend_2" checked></td>
-                    <td><input type="checkbox" id="attend_3" checked></td><td><input type="checkbox" id="attend_4" checked></td>
-                    <td><input type="checkbox" id="attend_5" checked></td><td><input type="checkbox" id="attend_6">留空/休</td>
-                    <td><input type="checkbox" id="attend_7">留空/休</td>
+                    <td style="background:#f8f9fa; font-weight:bold;">1. 當日排班狀態</td>
+                    <td><select id="attend_status_1"><option value="出席">✔️ 出席上班</option><option value="排休">💤 劃休/排休</option></select></td>
+                    <td><select id="attend_status_2"><option value="出席">✔️ 出席上班</option><option value="排休">💤 劃休/排休</option></select></td>
+                    <td><select id="attend_status_3"><option value="出席">✔️ 出席上班</option><option value="排休">💤 劃休/排休</option></select></td>
+                    <td><select id="attend_status_4"><option value="出席">✔️ 出席上班</option><option value="排休">💤 劃休/排休</option></select></td>
+                    <td><select id="attend_status_5"><option value="出席">✔️ 出席上班</option><option value="排休">💤 劃休/排休</option></select></td>
+                    <td><select id="attend_status_6"><option value="排休">💤 劃休/排休</option><option value="出席">✔️ 出席上班</option></select></td>
+                    <td><select id="attend_status_7"><option value="排休">💤 劃休/排休</option><option value="出席">✔️ 出席上班</option></select></td>
                 </tr>
                 <tr>
                     <td style="background:#f8f9fa; font-weight:bold;">2. 上班門市</td>
@@ -175,7 +178,7 @@
 
     <h2>三、出席日分店市場商圈觀察自述報告 (權重 20% - 僅限個人出勤上班日填寫)</h2>
     <div class="rule-hint">
-        🧭 <b>深度自述規範（佔20分）：</b>請直接輸入 <b>50 字以上</b>之當週整體上班門市概況分享、商圈客流考察、給自己的工作期許或對於公司想反映的內容。<b>字數未滿 50 字系統直接判定 0 分。</b>
+        🧭 <b>深度自述規範（佔20分）：</b>請直接輸入 <b>50 字以上</b>之當週整體上班門市概況分享、商圈客流考察、給自己的工作期許或對於公司想反應的內容。<b>字數未滿 50 字系統直接判定 0 分。</b>
     </div>
     <div class="section">
         <div style="background:#f1f3f5; padding:10px; border-radius:6px; margin-bottom:12px; font-weight:bold; font-size:13px;">
@@ -197,7 +200,7 @@
         
         <div class="skills-container">
             <div class="skill-item"><input type="checkbox" class="skill-chk" checked> 1. 公司制度說明</div>
-            <div class="skill-item"><input type="checkbox" class="skill-chk" checked> 2. 工作環境安全宣宣導(勞基法)</div>
+            <div class="skill-item"><input type="checkbox" class="skill-chk" checked> 2. 工作環境安全宣導(勞基法)</div>
             <div class="skill-item"><input type="checkbox" class="skill-chk" checked> 3. 開店流程</div>
             <div class="skill-item"><input type="checkbox" class="skill-chk" checked> 4. 清潔維護</div>
             <div class="skill-item"><input type="checkbox" class="skill-chk" checked> 5. 商品陳列</div>
@@ -227,9 +230,9 @@
         </div>
     </div>
 
-    <h2>五、重大工作紀律、大忌與紅線事故審查 (直接自當週「最終總分」扣減)</h2>
+    <h2>五、重大工作紀律、大忌與紅線事故審查 (直接自當週「最終總分」強制扣減)</h2>
     <div class="section" style="background:#fff5f5; border:1px solid #ffcdd2;">
-        <div class="grid-4" style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px;">
+        <div class="grid-5">
             <div>
                 <label style="color:#b71c1c;">1. 客訴成立案件</label>
                 <select id="taboo_complaint"><option value="0">無缺失 (0分)</option><option value="5">有客訴成立 (-5分)</option></select>
@@ -243,7 +246,7 @@
                 <select id="taboo_inventory"><option value="0">無缺失 (0分)</option><option value="2.5">有商品盤差 (-2.5分)</option></select>
             </div>
             <div>
-                <label style="color:#b71c1c;">4. 總部抽查/服務不佳</label>
+                <label style="color:#b71c1c;">4. 總部抽查服務不佳</label>
                 <select id="taboo_service"><option value="0">無缺失 (0分)</option><option value="2.5">抽查不稱職成立 (-2.5分)</option></select>
             </div>
             <div>
@@ -251,9 +254,34 @@
                 <select id="taboo_schedule"><option value="0">有按時回傳 (0分)</option><option value="2.5">❌ 無回傳日程表 (-2.5分)</option></select>
             </div>
         </div>
+        <div class="grid-3" style="margin-top:15px; border-top:1px dashed #ff3b30; padding-top:12px;">
+            <div>
+                <label style="color:#b71c1c;">🔥 6. 個人因素影響延關/遲開</label>
+                <select id="taboo_delay_shop"><option value="0">無此狀況 (0分)</option><option value="5">當週有延後開班或提早關班 (-5分)</option></select>
+            </div>
+            <div>
+                <label style="color:#b71c1c;">🔥 7. 當日排班上班遲到</label>
+                <select id="taboo_late"><option value="0">無此狀況 (0分)</option><option value="1">當週排班上班有遲到紀錄 (-1分)</option></select>
+            </div>
+            <div>
+                <label style="color:#b71c1c;">🔥 8. 違反勞動契約四五任一項</label>
+                <select id="taboo_contract"><option value="0">無此狀況 (0分)</option><option value="20">🚨 觸犯合約四五紅線條款 (-20分)</option></select>
+            </div>
+        </div>
     </div>
 
-    <button class="btn-calc" onclick="runZbcsmadeStaffKpiV9()">⚡ 執行 Zbcsmade 正職同仁全新考核系統運算</button>
+    <h2>六、年度特殊貢獻、社群行銷與設計提案加分項目 (直接加回當週最終總分)</h2>
+    <div class="section bonus-zone">
+        <div class="grid-5" style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px;">
+            <div><label><input type="checkbox" id="bonus_video"> 1. 協助短影音拍攝並發布 (+1分)</label></div>
+            <div><label><input type="checkbox" id="bonus_threads"> 2. Threads發文破100讚 (+1.5分)</label></div>
+            <div><label><input type="checkbox" id="bonus_viral"> 3. 社群討論好評破1000瀏覽 (+2分)</label></div>
+            <div><label><input type="checkbox" id="bonus_dm"> 4. 小盒子被顧客私訊表揚服務 (+1分)</label></div>
+            <div><label><input type="checkbox" id="bonus_proposal"> 5. 提案自訂款成功被公司採用 (+3分)</label></div>
+        </div>
+    </div>
+
+    <button class="btn-calc" onclick="runZbcsmadeStaffKpiV11()">⚡ 執行 Zbcsmade 正職同仁全新考核系統運算</button>
 
     <div id="resultArea" class="result-box">
         <h3 style="margin-top:0; color:#c2185b; border-bottom: 2px solid #ffb6c1; padding-bottom:8px;">📋 考核結果：【<span id="resWeek"></span>】個人綜合職責自評考核報告</h3>
@@ -376,7 +404,7 @@
         }
     }
 
-    function runZbcsmadeStaffKpiV9() {
+    function runZbcsmadeStaffKpiV11() {
         const currentWeek = document.getElementById('weekSelect').value;
         const staffName = document.getElementById('staffName').value;
         const homeShop = document.getElementById('homeShop').value;
@@ -406,17 +434,17 @@
 
         // 一、個人排班與業績 (40分)
         let activeWorkingDays = 0, totalVolRate = 0, sumUpt = 0, uptDaysCount = 0;
-        let remoteSupportDays = 0; // 跨縣市遠程支援天數
-        let nanxiHighPressureDays = 0; // 中山/南西同編制人员在南西大店上班天數
+        let remoteSupportDays = 0; 
+        let nanxiHighPressureDays = 0; 
         let attendanceLogs = [];
 
-        const friAttend = document.getElementById('attend_5').checked;
-        const satAttend = document.getElementById('attend_6').checked;
-        const sunAttend = document.getElementById('attend_7').checked;
-        let weekendBonus = (friAttend && satAttend && sunAttend) ? 2.5 : 0;
+        const friStatus = document.getElementById('attend_status_5').value === '出席';
+        const satStatus = document.getElementById('attend_status_6').value === '出席';
+        const sunStatus = document.getElementById('attend_status_7').value === '出席';
+        let weekendBonus = (friStatus && satStatus && sunStatus) ? 2.5 : 0;
 
         for (let i = 1; i <= 7; i++) {
-            const isAttended = document.getElementById(`attend_${i}`).checked;
+            const isAttended = document.getElementById(`attend_status_${i}`).value === '出席';
             if (isAttended) {
                 activeWorkingDays++;
                 const currentShop = document.getElementById(`shop_${i}`).value;
@@ -424,12 +452,9 @@
                 const dailyVol = parseFloat(document.getElementById(`vol_${i}`).value) || 0;
                 const dailyUpt = parseFloat(document.getElementById(`upt_${i}`).value) || 0;
 
-                // 核心加分重組邏輯修正：
                 if (currentShop === '南西' && (homeShop === '中山' || homeShop === '南西')) {
-                    // 狀況A：本就是中山/南西編制的人，在南西店出勤上班，每日直接外加 0.5 分
                     nanxiHighPressureDays++;
                 } else if (currentShop !== homeShop) {
-                    // 狀況B：其餘跨商圈、跨縣市的遠程支援（例如中原/新竹調店支援），每日外加 1 分
                     remoteSupportDays++;
                 }
 
@@ -450,13 +475,11 @@
         let volScore = activeWorkingDays > 0 ? (totalVolRate / activeWorkingDays) * 30 : 0;
         let avgUpt = uptDaysCount > 0 ? (sumUpt / uptDaysCount) : 0;
         
-        // UPT 階梯精算
         let uptScorePool = 5.0;
         if (avgUpt >= 2.4) uptScorePool = 10.0;
         else if (avgUpt >= 2.2) uptScorePool = 9.0;
         else if (avgUpt >= 2.0) uptScorePool = 7.5;
 
-        // 計算最新外加支援津貼分 = 遠程支援天數*1 + 中山南西人員出勤南西大店天數*0.5
         let supportBonusScore = (remoteSupportDays * 1.0) + (nanxiHighPressureDays * 0.5);
         let total_score_one = volScore + uptScorePool + supportBonusScore + weekendBonus;
 
@@ -498,7 +521,7 @@
             sc_msg = `❌ 自述內容量未達 50 字限制 (目前僅 ${text_report.length} 字)，此大項分數直接以 0 分全面核算。`;
         }
 
-        // 四、22項核心技能實操清單 (10分 - 每少一格扣 0.5)
+        // 四、22項核心技能實操清單 (10分)
         const skillBoxes = document.querySelectorAll('.skill-chk');
         let checkedSkillsCount = 0;
         skillBoxes.forEach(box => { if(box.checked) checkedSkillsCount++; });
@@ -507,16 +530,27 @@
         if(skillScore < 0) skillScore = 0;
         if (document.getElementById('cheat_trigger').checked) skillScore = 0; 
 
-        // 五、重大紅線事故大忌扣分 (直接扣總分)
+        // 五、重大紅線事故大忌扣分 (新增個人因素及排班遲到合約條款)
         let taboo_deduction = 0;
         taboo_deduction += parseFloat(document.getElementById('taboo_complaint').value) || 0;
         taboo_deduction += parseFloat(document.getElementById('taboo_cash').value) || 0;
         taboo_deduction += parseFloat(document.getElementById('taboo_inventory').value) || 0;
         taboo_deduction += parseFloat(document.getElementById('taboo_service').value) || 0;
         taboo_deduction += parseFloat(document.getElementById('taboo_schedule').value) || 0;
+        taboo_deduction += parseFloat(document.getElementById('taboo_delay_shop').value) || 0;
+        taboo_deduction += parseFloat(document.getElementById('taboo_late').value) || 0;
+        taboo_deduction += parseFloat(document.getElementById('taboo_contract').value) || 0;
 
-        // 總得分匯總
-        let totalScore = total_score_one + dutyScore + socialMarketScore + skillScore - fraudDeduction - delayDeduction - taboo_deduction;
+        // 六、協助特殊貢獻加分累計
+        let specialBonusScore = 0;
+        if(document.getElementById('bonus_video').checked) specialBonusScore += 1.0;
+        if(document.getElementById('bonus_threads').checked) specialBonusScore += 1.5;
+        if(document.getElementById('bonus_viral').checked) specialBonusScore += 2.0;
+        if(document.getElementById('bonus_dm').checked) specialBonusScore += 1.0;
+        if(document.getElementById('bonus_proposal').checked) specialBonusScore += 3.0;
+
+        // 總得分綜合匯總
+        let totalScore = total_score_one + dutyScore + socialMarketScore + skillScore + specialBonusScore - fraudDeduction - delayDeduction - taboo_deduction;
         if (totalScore > 100) totalScore = 100;
         if (totalScore < 0) totalScore = 0;
 
@@ -531,26 +565,23 @@
         document.getElementById('gradeText').innerText = grade;
         document.getElementById('resultArea').style.display = "block";
 
-        // 生成複製文字
-        let text = `📊 【Zbcsmade 正職同仁綜合職責週度考核自評報告 V9】\n`;
+        // 生成複製純文字
+        let text = `📊 【Zbcsmade 正職同仁綜合職責週度考核自評報告 V11】\n`;
         text += `👤 同仁姓名：${staffName}  |  🏠 編制主屬：${homeShop}店\n`;
         text += `📅 考核週期：${currentWeek}  |  📬 自評繳交日：${submitDateVal || '未填'}\n`;
         text += `⏰ 行政時效查核：${delayMsg}\n`;
         text += `====================================\n`;
         text += `1️⃣ 個人出席班表與業績數據管控：${total_score_one.toFixed(1)} 分 (滿分40+外加分)\n`;
         attendanceLogs.forEach(log => { text += `${log}\n`; });
-        text += `   - 當週出勤天數：${activeWorkingDays} 天 | 團體平均 UPT：${avgUpt.toFixed(2)} ➔ UPT得分：${uptScorePool.toFixed(1)} 分\n`;
-        if(weekendBonus > 0) text += `   - ✨ 週末獎勵：五六日三天皆配合出勤上班，考核外加 +2.5 分\n`;
-        if(supportBonusScore > 0) {
-            text += `   - 🚗 支援與南西出勤津貼外加：+${supportBonusScore.toFixed(1)} 分\n`;
-            if (nanxiHighPressureDays > 0) text += `     ▪️ 中山南西編制內人員，本週共有 ${nanxiHighPressureDays} 天於高壓南西大店出勤上班 (每班加0.5分)\n`;
-            if (remoteSupportDays > 0) text += `     ▪️ 跨商圈/遠程分店支援天數：共 ${remoteSupportDays} 天 (每班加1分)\n`;
-        }
+        text += `   - 當週實際出勤上班天數：${activeWorkingDays} 天\n`;
+        text += `   - 當週團隊平均 UPT 表現：${avgUpt.toFixed(2)} ➔ UPT得分：${uptScorePool.toFixed(1)} 分\n`;
+        if(weekendBonus > 0) text += `   - ✨ 週末全勤獎勵：五六日三天皆配合出勤上班，考核外加 +2.5 分\n`;
+        if(supportBonusScore > 0) text += `   - 🚗 支援津貼加分：基本跨店支援 ${remoteSupportDays} 天 ｜ 南西大店高壓出勤 ${nanxiHighPressureDays} 天 ➔ 外加 +${supportBonusScore.toFixed(1)} 分\n`;
         
         text += `\n2️⃣ 6/1新制·雲端缺失加重反查明細：${dutyScore.toFixed(1)} 分 (滿分30)\n`;
         if(defectRows.length > 0) {
             defectReportLogs.forEach(log => { text += `${log}\n`; });
-            text += `   - 常態缺失統計：未施作 ${unexecutedCount} 項(重扣2分/項)｜未達標 ${subStandardCount} 項(扣1分/項) ➔ 共扣 -${totalDefectDeduction} 分\n`;
+            text += `   - 常態缺失統計：未施作 ${unexecutedCount} 項(重扣2.5分/項)｜未達標 ${subStandardCount} 項(扣1分/項) ➔ 共扣 -${totalDefectDeduction} 分\n`;
         } else {
             text += `   - ✅ 雲端核對結果：當週在雲端完全無任何店務維護缺失紀錄，取得滿分 30 分！\n`;
         }
@@ -567,18 +598,30 @@
         text += `   - ✍️ 主管週一會審對談期許與評語：${document.getElementById('manager_review_note').value}\n`;
         if(document.getElementById('cheat_trigger').checked) text += `   🚨 【主管反查核技能舞弊】：經查技能實操涉及蓄意虛報，此大項強制以 0 分重懲！\n`;
 
+        if(specialBonusScore > 0) {
+            text += `\n✨ 5️⃣ 年度特殊貢獻與社群加分累計：外加補償總分 +${specialBonusScore.toFixed(1)} 分\n`;
+            if(document.getElementById('bonus_video').checked) text += `   ▪️ 協助品牌短影音拍攝並順利發布 (+1分)\n`;
+            if(document.getElementById('bonus_threads').checked) text += `   ▪️ 協助發布 Threads 貼文且有效破 100 讚 (+1.5分)\n`;
+            if(document.getElementById('bonus_viral').checked) text += `   ▪️ 被社群討論好評且瀏覽擴散破 1000 次以上 (+2分)\n`;
+            if(document.getElementById('bonus_dm').checked) text += `   ▪️ 服務深獲顧客認同並被小盒子私訊稱讚表揚 (+1分)\n`;
+            if(document.getElementById('bonus_proposal').checked) text += `   ▪️ 積極提案自訂款服飾內容且成功被公司採用 (+3分)\n`;
+        }
+
         if(taboo_deduction > 0) {
-            text += `\n🔥 5️⃣ 重大工作紀律大忌與紅線事故扣分明細：共加重扣除 -${taboo_deduction} 分\n`;
+            text += `\n🔥 6️⃣ 重大工作紀律大忌與紅線事故扣分明細：共加重扣除 -${taboo_deduction} 分\n`;
             if(parseFloat(document.getElementById('taboo_complaint').value) > 0) text += `   ▪️ 本週出席日有成立客訴案件 (-5分)\n`;
             if(parseFloat(document.getElementById('taboo_cash').value) > 0) text += `   ▪️ 本週出席日有金額清點短少案件 (-2.5分)\n`;
             if(parseFloat(document.getElementById('taboo_inventory').value) > 0) text += `   ▪️ 本週出席日有商品盤差事件 (-2.5分)\n`;
             if(parseFloat(document.getElementById('taboo_service').value) > 0) text += `   ▪️ 本週出席日有總部抽查/顧客反應服務不佳 (-2.5分)\n`;
             if(parseFloat(document.getElementById('taboo_schedule').value) > 0) text += `   ▪️ 本週出席日未按時回傳個人日程表 (-2.5分)\n`;
+            if(parseFloat(document.getElementById('taboo_delay_shop').value) > 0) text += `   ▪️ 因個人因素影響門市延後開班或提早關班 (-5分)\n`;
+            if(parseFloat(document.getElementById('taboo_late').value) > 0) text += `   ▪️ 當日排班上班發生遲到紀錄 (-1分)\n`;
+            if(parseFloat(document.getElementById('taboo_contract').value) > 0) text += `   ▪️ 🚨 嚴重違規：觸犯合約第四及第五任一項目紅線 (-20分)\n`;
         }
 
         text += `------------------------------------\n`;
-        text += `🎯 當週個人核心最終總得分：${totalScore.toFixed(1)} 分 ➔ 綜合等第：${grade}\n`;
-        text += `💡 提示：本表單 V9 終極修正版已正式啟用。每週一請主動與核心主管索取第四大項評語，確認無誤後複製報告。`;
+        text += `🎯 當週個人核心最終總得分：${totalScore.toFixed(1)} 分 ➔ 綜合等等第：${grade}\n`;
+        text += `💡 提示：本表單 V11 終極完全體已正式就位。每週一請同仁主動與核心主管索取第四大項評語，確認無誤後複製報告。`;
 
         document.getElementById('summaryOutput').value = text;
     }
@@ -587,7 +630,7 @@
         const txt = document.getElementById('summaryOutput');
         txt.select();
         document.execCommand('copy');
-        alert('Zbcsmade 正職 V9 戰區出勤精準修正版報告已成功複製！');
+        alert('Zbcsmade 正職 V11 終極完全體報告已複製成功！');
     }
 </script>
 </body>
