@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zbcsmade 正職同仁週度自評考核系統 V4</title>
+    <title>Zbcsmade 正職同仁週度自評考核系統 V5</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f9; color: #1c1c1e; margin: 0; padding: 20px; line-height: 1.5; }
-        .container { max-width: 1200px; background: white; margin: 0 auto; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .container { max-width: 1250px; background: white; margin: 0 auto; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         h1 { text-align: center; color: #1c1c1e; font-size: 26px; margin-bottom: 5px; font-weight: 700; }
         .subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 30px; }
         h2 { font-size: 18px; color: #e91e63; margin-top: 35px; border-left: 5px solid #e91e63; padding-left: 12px; margin-bottom: 5px; }
         .rule-hint { font-size: 12px; color: #555; background: #fff0f5; padding: 10px 14px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #e91e63; font-weight: 500; line-height: 1.6; }
         .section { background: #fdfdfd; padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid #e5e5ea; }
         .grid-flex { display: flex; flex-wrap: wrap; gap: 15px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; color: #333; }
         input[type="number"], select, input[type="text"], textarea, input[type="date"] { width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 13px; }
@@ -21,24 +21,22 @@
         table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
         th, td { border: 1px solid #dee2e6; padding: 10px; text-align: center; font-size: 13px; }
         th { background-color: #f8f9fa; font-weight: bold; color: #495057; }
-        .schedule-table td { padding: 12px 6px; }
         .btn-calc { background-color: #e91e63; color: white; border: none; padding: 16px; font-size: 18px; font-weight: bold; border-radius: 8px; width: 100%; cursor: pointer; margin-top: 25px; box-shadow: 0 4px 12px rgba(233,30,99,0.3); }
         .btn-calc:hover { background-color: #c2185b; }
         .result-box { margin-top: 30px; padding: 25px; border-radius: 12px; display: none; background-color: #fff0f5; border: 1px solid #ffc0cb; color: #c2185b; }
         .summary-text { width: 100%; height: 420px; font-family: monospace; background: #212529; color: #f8f9fa; padding: 15px; border-radius: 6px; margin-top: 10px; font-size: 13px; line-height: 1.6; }
         .btn-copy { background-color: #4caf50; color: white; border: none; padding: 12px; font-size: 15px; font-weight: bold; border-radius: 6px; width: 100%; cursor: pointer; margin-top: 8px; }
         .danger-zone { background: #fff5f5; border: 1px dashed #ff3b30; padding: 12px; border-radius: 6px; color: #d32f2f; font-size: 12px; margin-top: 8px; }
-        .list-item { font-size: 13px; font-weight: 500; margin-bottom: 8px; display: flex; align-items: flex-start; }
-        .punish-hint { color: #ff3b30; font-weight: bold; font-size: 11px; margin-left: 5px; }
-        .duty-day-row { border-bottom: 1px dashed #ddd; padding: 10px 0; display: flex; align-items: center; justify-content: space-between; gap: 15px; }
-        .duty-day-title { font-weight: bold; color: #0071e3; min-width: 90px; }
+        .btn-add-item { background-color: #0071e3; color: white; border: none; padding: 8px 16px; font-size: 13px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+        .btn-add-item:hover { background-color: #005bb5; }
+        .btn-row-del { background-color: #ff3b30; color: white; border: none; padding: 6px 10px; font-size: 12px; border-radius: 4px; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Zbcsmade 正職同仁週度自評與考核系統</h1>
-    <div class="subtitle">營運核心：排班出席管控 / 雲端反查店務缺失 / 出席日深度心得 / 主管週一實時評定機制</div>
+    <div class="subtitle">營運核心：排班出席管控 / 雲端缺失動態反查 / 出席日深度心得 / 雙軌制店務重懲機制</div>
 
     <h2>基本考核設定 & 天氣環境與繳交時效修正機制</h2>
     <div class="rule-hint">
@@ -103,13 +101,10 @@
             <tbody>
                 <tr>
                     <td style="background:#f8f9fa; font-weight:bold;">1. 當日有出席</td>
-                    <td><input type="checkbox" id="attend_1" checked onchange="syncDutyDays()"></td>
-                    <td><input type="checkbox" id="attend_2" checked onchange="syncDutyDays()"></td>
-                    <td><input type="checkbox" id="attend_3" checked onchange="syncDutyDays()"></td>
-                    <td><input type="checkbox" id="attend_4" checked onchange="syncDutyDays()"></td>
-                    <td><input type="checkbox" id="attend_5" checked onchange="syncDutyDays()"></td>
-                    <td><input type="checkbox" id="attend_6" onchange="syncDutyDays()">留空/休</td>
-                    <td><input type="checkbox" id="attend_7" onchange="syncDutyDays()">留空/休</td>
+                    <td><input type="checkbox" id="attend_1" checked></td><td><input type="checkbox" id="attend_2" checked></td>
+                    <td><input type="checkbox" id="attend_3" checked></td><td><input type="checkbox" id="attend_4" checked></td>
+                    <td><input type="checkbox" id="attend_5" checked></td><td><input type="checkbox" id="attend_6">留空/休</td>
+                    <td><input type="checkbox" id="attend_7">留空/休</td>
                 </tr>
                 <tr>
                     <td style="background:#f8f9fa; font-weight:bold;">2. 上班門市</td>
@@ -139,290 +134,22 @@
         </table>
     </div>
 
-    <h2>二、6/1新制·每日營運缺失雲端反查核對矩陣 (權重：30分 - 僅針對有出席之日子核對)</h2>
+    <h2>二、6/1新制·每日營運缺失雲端反查核對矩陣 (權重：30分 - 採出席日有缺失才手動新增登錄)</h2>
     <div class="rule-hint">
-        ⚙️ <b>6/1 新版核對邏輯：</b> 同仁請至公司雲端查看當天被登記的缺失項目，並透過下方下拉式選單如實選取，每項常態扣減 1 分。若經反查有隱瞞欺報，每項強制重扣 1.5 分！
+        ⚙️ <b>6/1 新版動態核對機制（雙軌計分）：</b><br>
+        請同仁至公司雲端反查自己有出勤的日子。如果有被登記缺失，請點擊下方按鈕<b>「＋新增一筆雲端缺失紀錄」</b>進行申報。系統會自動進行加總扣分：<br>
+        🔴 <b>【未施作項目（直接擺爛沒做）】</b>：每出現一項，當週考績總分直接<b>重扣 1.5 分</b>！<br>
+        🟡 <b>【有施作，經複檢未達標（有做但沒做好）】</b>：每出現一項，當週考績總分直接<b>扣 1 分</b>！<br>
+        <span style="color:#d32f2f; font-weight:bold;">🚨 總部防弊鐵律：若雲端有紀錄卻故意不新增隱瞞欺報，一經抽查，每項欺報直接從總考績強制重扣 1.5 分！</span>
     </div>
     <div class="section">
-        <div id="dutyDaysContainer">
-            </div>
-
-        <div class="list-item" style="background:#e3f2fd; padding:10px; border-radius:6px; margin-top:15px; border: 1px solid #b8daff;">
-            <label style="margin-bottom:0; flex:1;">📝 填入當週共同閉店同仁姓名：
-                <input type="text" id="closing_staff_names" value="同仁A、PT夥伴" style="padding:6px; margin-top:5px; width:98%;">
-            </label>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:13px; font-weight:bold; color:#495057;">📊 當週被記店務缺失明細登錄區：</span>
+            <button class="btn-add-item" onclick="addDefectRow()">＋ 新增一筆雲端缺失紀錄</button>
         </div>
 
-        <div class="danger-zone" style="margin-top:15px;">
-            <strong>🚨 主管/總部虛報防弊反查核算（如同仁誠實申報缺失則此欄填 0）：</strong><br>
-            <span>
-                本週經核對雲端，發現同仁有 <input type="number" id="fraud_items_count" value="0" min="0" style="width:50px; display:inline-block; padding:2px; text-align:center;"> 項缺失「隱瞞未填報」。
-                <span style="color:red; font-weight:bold;">(每發現 1 項欺報，當週總考績分數將加重扣除 1.5 分！)</span>
-            </span>
-        </div>
-    </div>
-
-    <h2>三、出席日分店社群行銷與市場商圈觀察報告 (權重 20% - 僅限個人出勤上班日填寫)</h2>
-    <div class="rule-hint">
-        📝 <b>報告加分與給分規則（滿分 20 分）：</b><br>
-        1. <b>📱 社群基本功（10分）</b>：出勤當天，需確保所在門市限動發布滿 5 篇以上，且小盒子訊息確實清空回覆。<br>
-        2. <b>🧭 市場深度自述回報（10分）</b>：不流於死板打勾！請<b>直接打字填寫「50字以上」</b>之結構化報告。內容包含：當天分店商圈客流/女性人流與競品動態分享、對公司的優化建議、或是給自己的工作期許。<b>未滿50字直接不予給分</b>。
-    </div>
-    <div class="section">
-        <div class="grid-2" style="margin-bottom:15px;">
-            <div class="card">
-                <span style="font-weight:bold; color:#e91e63; display:block; margin-bottom:8px;">📱 1. 出席日門市社群行銷審查</span>
-                <label><input type="checkbox" id="sc_posts_done" checked> 當天所在分店限動已發布滿 5 篇以上</label>
-                <label style="margin-top:5px;"><input type="checkbox" id="sc_box_done" checked> 當天門市 IG 小盒子與社群訊息已全數清空回覆</label>
-            </div>
-            <div class="card" style="background:#f1f3f5;">
-                <span style="font-weight:bold; color:#0071e3; display:block; margin-bottom:8px;">📊 2. 字數即時檢查安全網</span>
-                <div style="font-size:13px; font-weight:bold; color:#333; margin-top:10px;">
-                    目前輸入字數：<span id="charCountDisplay" style="color:#e91e63; font-size:18px;">0</span> 字 
-                    <span id="charStatusLabel" style="color:red; margin-left:10px;">❌ 字數未達 50 字標準 (不予給分)</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <label style="color:#0071e3; font-size:14px; margin-bottom:6px;">🧭 3. 當週市場商圈觀察、概況分享、個人期許與公司反饋綜合自述欄 (限50字以上)：</label>
-            <textarea id="market_report_text" oninput="checkCharLength()" style="height:140px;" placeholder="範例（可包含：當週整體上班門市概況分享 / 給自己的工作期許 / 對於公司想反應與優化的內容）：&#10;這週支援南西店與中山店時，明顯感覺到下午4-6點的女性上班族與學生人流非常集中，附近競品這週也有新上架包包與大腸圈品項。對自己的期許是下週在搭配OOTD人台時速度能再加快。另外想向公司反應，門市的某款耗材紙袋目前存量有些偏低，建議可以提早安排補貨..."></textarea>
-        </div>
-    </div>
-
-    <h2>四、學習進度與核心工作態度評分 (權重 10% - 主管每週一專屬評定欄位)</h2>
-    <div class="rule-hint">
-        ⚠️ <b>同仁行政流程規範：</b>此大項 10%（滿分 10 分）包含對內對外的服務態度與學習積極度。<b>請同仁於「每週一」主動與核心駐點主管索取分數、考核對談並填入。</b>
-    </div>
-    <div class="section grid-3">
-        <div>
-            <label>1. 對內對外服務態度評分 (0 - 5分)</label>
-            <input type="number" id="manager_attitude_score" value="5" min="0" max="5" step="0.5">
-        </div>
-        <div>
-            <label>2. 核心技能學習積極度 (0 - 5分)</label>
-            <input type="number" id="manager_study_score" value="4.5" min="0" max="5" step="0.5">
-        </div>
-        <div>
-            <label>主管週一開會考核評語與期許</label>
-            <input type="text" id="manager_review_note" value="該同仁日常服務熱忱極佳，6月新制自述詳盡，週一對談表現優良。">
-        </div>
-    </div>
-
-    <button class="btn-calc" onclick="runZbcsmadeStaffKpiV4()">⚡ 執行 Zbcsmade 正職同仁全新考核系統運算</button>
-
-    <div id="resultArea" class="result-box">
-        <h3 style="margin-top:0; color:#c2185b; border-bottom: 2px solid #ffb6c1; padding-bottom:8px;">📋 考核結果：【<span id="resWeek"></span>】個人綜合職責自評考核報告</h3>
-        <div class="grid-2" style="margin-bottom:15px;">
-            <div style="font-size: 20px; font-weight: bold; color:#c2185b;">當週個人最終得分：<span id="totalScore" style="font-size:32px; color:#e91e63;">0</span> 分</div>
-            <div style="font-size: 16px; font-weight: bold; color:#c2185b;">當週考核評定等第：<span id="gradeText" style="font-size:20px;">-</span></div>
-        </div>
-        
-        <h4 style="margin-bottom:5px; margin-top:20px; color:#c2185b;">📋 系統自動生成之結構化自評文本 (一鍵複製發送給主管覆核)</h4>
-        <textarea id="summaryOutput" class="summary-text" readonly></textarea>
-        <button class="btn-copy" onclick="copyKpiText()">📋 一鍵複製個人週度考核報告</button>
-    </div>
-</div>
-
-<script>
-    const storeTargets = {
-        '南西': { month: 5800, base: (5800 / 4) / 6.55 },
-        '中山': { month: 4800, base: (4800 / 4) / 6.55 },
-        '中原': { month: 2200, base: (2200 / 4) / 6.55 },
-        '新竹': { month: 1400, base: (1400 / 4) / 6.55 }
-    };
-    const dayModifiers = [0.45, 0.55, 0.70, 0.70, 1.20, 1.55, 1.40];
-    const weekDayNames = ['一', '二', '三', '四', '五', '六', '日'];
-
-    const defectOptions = [
-        { value: "none", text: "✅ 當日完美無缺失 (維持不扣分)" },
-        { value: "lineworks", text: "❌ 缺失：未開 LineWorks 確認本日布達與交代事項 (-1分)" },
-        { value: "hardware", text: "❌ 缺失：未提早開啟照明/空調/香氛/音樂/電腦 (-1分)" },
-        { value: "pos_cash", text: "❌ 缺失：早/晚班零用金、POS發票確認不實 (-1分)" },
-        { value: "mirror_clean", text: "❌ 缺失：門片玻璃或店內鏡面髒污、有指紋 (-1分)" },
-        { value: "dust_clean", text: "❌ 缺失：陳列檯面(收銀、中島、展示桌)有灰塵 (-1分)" },
-        { value: "floor_clean", text: "❌ 缺失：門口有菸蒂落葉 / 店內地面、更衣室髒污 (-1分)" },
-        { value: "trash", text: "❌ 缺失：櫃台、廁所或休息室垃圾未打包清運 (-1分)" },
-        { value: "ootd_photo", text: "❌ 缺失：14:00前未完成人台更換或OOTD拍照上傳 (-1分)" },
-        { value: "replenish", text: "❌ 缺失：18:00-19:00未巡查補貨飾品/包包/皮帶 (-1分)" },
-        { value: "stock_manage", text: "❌ 缺失：未整理上架新商品 / 庫存未歸位 (-1分)" },
-        { value: "close_safe", text: "❌ 缺失：閉店冷氣音樂未關 / 香氛延長線主開關未拔 (-1分)" },
-        { value: "wed_consumable", text: "❌ 缺失：週三未確實盤點耗材袋子/發票紙/備用金 (-1分)" },
-        { value: "wed_stock", text: "❌ 缺失：週三未盤點常駐A級商品與飾品並回報主倉 (-1分)" },
-        { value: "mon_cleaning", text: "❌ 缺失：週一未完成標籤更換或廁所大掃除 (-1分)" },
-        { value: "other", text: "❌ 缺失：雲端登記之其他店務維護缺失 (-1分)" }
-    ];
-
-    window.onload = function() {
-        const today = new Date();
-        document.getElementById('submitDate').value = today.toISOString().split('T')[0];
-        const lastSunday = new Date();
-        lastSunday.setDate(today.getDate() - today.getDay());
-        document.getElementById('evaluationDate').value = lastSunday.toISOString().split('T')[0];
-        
-        syncDutyDays();
-        checkCharLength();
-    };
-
-    // 即時檢查自述文字字數
-    function checkCharLength() {
-        const text = document.getElementById('market_report_text').value;
-        const len = text.length;
-        document.getElementById('charCountDisplay').innerText = len;
-        
-        const label = document.getElementById('charStatusLabel');
-        if (len >= 50) {
-            label.innerText = "🟢 已達50字標準 (核發 10 分)";
-            label.style.color = "green";
-        } else {
-            label.innerText = `❌ 字數未達 50 字標準 (目前缺 ${50 - len} 字，此小項不給分)`;
-            label.style.color = "red";
-        }
-    }
-
-    function syncDutyDays() {
-        const container = document.getElementById('dutyDaysContainer');
-        container.innerHTML = '';
-        let hasAnyAttendance = false;
-
-        for (let i = 1; i <= 7; i++) {
-            const isAttended = document.getElementById(`attend_${i}`).checked;
-            if (isAttended) {
-                hasAnyAttendance = true;
-                const shopName = document.getElementById(`shop_${i}`).value;
-                
-                const row = document.createElement('div');
-                row.className = 'duty-day-row';
-                
-                const titleSpan = document.createElement('span');
-                titleSpan.className = 'duty-day-title';
-                titleSpan.innerText = `星期${weekDayNames[i-1]} (${shopName}店)`;
-                
-                const selectEl = document.createElement('select');
-                selectEl.id = `defect_day_${i}`;
-                selectEl.style.flex = "1";
-                
-                defectOptions.forEach(opt => {
-                    const option = document.createElement('option');
-                    option.value = opt.value;
-                    option.innerText = opt.text;
-                    selectEl.appendChild(option);
-                });
-                
-                row.appendChild(titleSpan);
-                row.appendChild(selectEl);
-                container.appendChild(row);
-            }
-        }
-        if (!hasAnyAttendance) {
-            container.innerHTML = '<div style="color:red; font-size:13px; font-weight:bold; padding:10px;">⚠️ 您尚未在第一大項勾選任何上班出席日，請先完成排班勾選。</div>';
-        }
-    }
-
-    function runZbcsmadeStaffKpiV4() {
-        const currentWeek = document.getElementById('weekSelect').value;
-        const staffName = document.getElementById('staffName').value;
-        const homeShop = document.getElementById('homeShop').value;
-
-        // --- 行政時效扣分 ---
-        const evalDateVal = document.getElementById('evaluationDate').value;
-        const submitDateVal = document.getElementById('submitDate').value;
-        let delayDays = 0, delayDeduction = 0;
-        let delayMsg = "✅ 符合次週一前行政時效大限";
-
-        if(evalDateVal && submitDateVal) {
-            const evalDateObj = new Date(evalDateVal);
-            const submitDateObj = new Date(submitDateVal);
-            const limitDateObj = new Date(evalDateObj);
-            limitDateObj.setDate(limitDateObj.getDate() + 1);
-            const timeDiff = submitDateObj.getTime() - limitDateObj.getTime();
-            if (timeDiff > 0) {
-                delayDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-                delayDeduction = delayDays * 2.5;
-                delayMsg = `⚠️ 延遲填表扣分：已延誤 ${delayDays} 天提交 ➔ 強制扣除 ${delayDeduction.toFixed(1)} 分！`;
-            }
-        }
-
-        // 天氣補償
-        const rainDays = parseInt(document.getElementById('rainyDaysDisplay').innerText) || 0;
-        const weatherBonus = rainDays * 0.02;
-
-        // 一、個人排班與業績 (權重 40分)
-        let activeWorkingDays = 0, totalVolRate = 0, sumUpt = 0, uptDaysCount = 0;
-        let supportDays = 0, nanxiSupportDays = 0;
-        let attendanceLogs = [];
-        let dutyReportLogs = [];
-
-        const friAttend = document.getElementById('attend_5').checked;
-        const satAttend = document.getElementById('attend_6').checked;
-        const sunAttend = document.getElementById('attend_7').checked;
-        let weekendBonus = (friAttend && satAttend && sunAttend) ? 2.5 : 0;
-
-        let totalDefectDeduction = 0;
-
-        for (let i = 1; i <= 7; i++) {
-            const isAttended = document.getElementById(`attend_${i}`).checked;
-            if (isAttended) {
-                activeWorkingDays++;
-                const currentShop = document.getElementById(`shop_${i}`).value;
-                const dailyVol = parseFloat(document.getElementById(`vol_${i}`).value) || 0;
-                const dailyUpt = parseFloat(document.getElementById(`upt_${i}`).value) || 0;
-
-                if (currentShop !== homeShop) {
-                    supportDays++;
-                    if (currentShop === '南西') { supportDays++; nanxiSupportDays++; }
-                }
-
-                const shopBase = storeTargets[currentShop].base;
-                const dailyTarget = shopBase * dayModifiers[i - 1];
-                let dailyRate = dailyTarget > 0 ? (dailyVol / dailyTarget) : 0;
-                dailyRate += weatherBonus;
-                if(dailyRate > 1.0) dailyRate = 1.0;
-                totalVolRate += dailyRate;
-
-                if (dailyUpt > 0) { sumUpt += dailyUpt; uptDaysCount++; }
-                attendanceLogs.push(`     ▪️ 星期${weekDayNames[i-1]}：[${currentShop}店] 團體件數:${dailyVol}件/標準:${dailyTarget.toFixed(1)}件 | UPT:${dailyUpt}`);
-
-                const defectSelect = document.getElementById(`defect_day_${i}`);
-                if (defectSelect) {
-                    const selectedVal = defectSelect.value;
-                    const selectedText = defectSelect.options[defectSelect.selectedIndex].text;
-                    if (selectedVal !== "none") {
-                        totalDefectDeduction += 1.0;
-                    }
-                    dutyReportLogs.push(`     ▪️ 星期${weekDayNames[i-1]} (${currentShop}店) 雲端核對結果 ➔ ${selectedText}`);
-                }
-            }
-        }
-
-        let volScore = activeWorkingDays > 0 ? (totalVolRate / activeWorkingDays) * 30 : 0;
-        let avgUpt = uptDaysCount > 0 ? (sumUpt / uptDaysCount) : 0;
-        let uptScorePool = 10;
-        if (avgUpt < 2.0) uptScorePool = 5.0;
-        else if (avgUpt >= 2.0 && avgUpt < 2.2) uptScorePool = 7.5;
-        else if (avgUpt >= 2.2 && avgUpt < 2.4) uptScorePool = 9.0;
-
-        let total_score_one = volScore + uptScorePool + (supportDays * 1.0) + weekendBonus;
-
-        // 二、店務缺失雲端反查 (權重 30分)
-        let dutyScore = 30 - totalDefectDeduction;
-        if(dutyScore < 0) dutyScore = 0;
-
-        const fraudItemsCount = parseInt(document.getElementById('fraud_items_count').value) || 0;
-        let fraudDeduction = fraudItemsCount * 1.5;
-
-        // 三、出席日社群行銷與市場觀察報告 (核心字數判定邏輯)
-        let socialMarketScore = 0;
-        let sc_msg = "";
-        if(activeWorkingDays > 0) {
-            // 社群基本功部分 (各佔5分)
-            let sc_base = 10;
-            if(!document.getElementById('sc_posts_done').checked) sc_base -= 5;
-            if(!document.getElementById('sc_box_done').checked) sc_base -= 5;
-            
-            // 深度自述部分 (佔10分，嚴格執行字數反查)
-            let text_report = document.getElementById('market_report_text').value;
-            let report_score = 0;
-            if (text_report.length >= 50) {
-                report_score = 10;
-                sc
+        <table id="defectTable">
+            <thead>
+                <tr>
+                    <th style="width: 12%;">發生日期</th>
+                    <th style="width: 12%;">發生分店</th>
