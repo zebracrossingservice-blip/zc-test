@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zbcsmade 正職同仁週度自評考核系統 V2</title>
+    <title>Zbcsmade 正職同仁週度自評考核系統 V4</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f9; color: #1c1c1e; margin: 0; padding: 20px; line-height: 1.5; }
         .container { max-width: 1200px; background: white; margin: 0 auto; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
@@ -13,11 +13,9 @@
         .rule-hint { font-size: 12px; color: #555; background: #fff0f5; padding: 10px 14px; border-radius: 8px; margin-bottom: 15px; border-left: 3px solid #e91e63; font-weight: 500; line-height: 1.6; }
         .section { background: #fdfdfd; padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid #e5e5ea; }
         .grid-flex { display: flex; flex-wrap: wrap; gap: 15px; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; color: #333; }
-        .input-desc { font-size: 11px; color: #666; margin-bottom: 6px; }
         input[type="number"], select, input[type="text"], textarea, input[type="date"] { width: 100%; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 13px; }
         input[type="checkbox"] { transform: scale(1.2); margin-right: 4px; vertical-align: middle; cursor: pointer; }
         table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
@@ -27,26 +25,24 @@
         .btn-calc { background-color: #e91e63; color: white; border: none; padding: 16px; font-size: 18px; font-weight: bold; border-radius: 8px; width: 100%; cursor: pointer; margin-top: 25px; box-shadow: 0 4px 12px rgba(233,30,99,0.3); }
         .btn-calc:hover { background-color: #c2185b; }
         .result-box { margin-top: 30px; padding: 25px; border-radius: 12px; display: none; background-color: #fff0f5; border: 1px solid #ffc0cb; color: #c2185b; }
-        .summary-text { width: 100%; height: 400px; font-family: monospace; background: #212529; color: #f8f9fa; padding: 15px; border-radius: 6px; margin-top: 10px; font-size: 13px; line-height: 1.6; }
+        .summary-text { width: 100%; height: 420px; font-family: monospace; background: #212529; color: #f8f9fa; padding: 15px; border-radius: 6px; margin-top: 10px; font-size: 13px; line-height: 1.6; }
         .btn-copy { background-color: #4caf50; color: white; border: none; padding: 12px; font-size: 15px; font-weight: bold; border-radius: 6px; width: 100%; cursor: pointer; margin-top: 8px; }
         .danger-zone { background: #fff5f5; border: 1px dashed #ff3b30; padding: 12px; border-radius: 6px; color: #d32f2f; font-size: 12px; margin-top: 8px; }
         .list-item { font-size: 13px; font-weight: 500; margin-bottom: 8px; display: flex; align-items: flex-start; }
-        .list-item input { margin-top: 4px; }
         .punish-hint { color: #ff3b30; font-weight: bold; font-size: 11px; margin-left: 5px; }
+        .duty-day-row { border-bottom: 1px dashed #ddd; padding: 10px 0; display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+        .duty-day-title { font-weight: bold; color: #0071e3; min-width: 90px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Zbcsmade 正職同仁週度自評與考核系統</h1>
-    <div class="subtitle">營運核心：排班出席管控 / 每日權重業績聯動 / 6月新制精細店務 / 主管學習態度綜合評定</div>
+    <div class="subtitle">營運核心：排班出席管控 / 雲端反查店務缺失 / 出席日深度心得 / 主管週一實時評定機制</div>
 
-    <!-- 基本資訊與填表時效 -->
     <h2>基本考核設定 & 天氣環境與繳交時效修正機制</h2>
     <div class="rule-hint">
-        ℹ️ <b>時效與氣候規範：</b><br>
-        1. <b>⏰ 行政時效大限（延遲繳交每天扣 2.5 分）</b>：本表單規定最晚於<b>考核當週的次週一</b>前完成自評繳交。每晚一天送出直接從總分強制<b>扣除 2.5 分</b>！<br>
-        2. <b>🌧️ 氣候修正補償：</b>每輸入 1 個雨天，上班當日分店團體銷售件數達標率自動補償修正另加 2%。
+        ℹ️ <b>時效與氣候規範：</b> 規定最晚於<b>考核當週的次週一</b>前完成自評繳交。每晚一天送出直接從總分強制<b>扣除 2.5 分</b>！
     </div>
     <div class="section grid-flex">
         <div style="flex: 1; min-width: 130px;">
@@ -92,30 +88,28 @@
         </div>
     </div>
 
-    <!-- 一、個人出席班表與業績管控 -->
     <h2>一、個人出席班表與業績管控 (權重：件數達標率 30分 + UPT 7日均分 10分 + 支援與全勤加分)</h2>
     <div class="rule-hint">
-        📊 <b>排班與支援計分規章：</b><br>
-        1. <b>📅 週末全勤加分</b>：當週<b>「五、六、日」</b>三天皆有排班並出席者，總分另行<b>外加 2.5 分</b>！<br>
-        2. <b>🚗 跨店支援津貼</b>：凡當天出席分店與您的「主屬分店」不同，即判定支援成功，<b>每支援一天外加 1 分</b>。<br>
-        3. <b>👑 南西高壓加碼</b>：若支援地點為<b>南西店</b>，除支援 1 分外再外加 0.5 分（即去南西支援一日共<b>額外加 1.5 分</b>）。<br>
-        4. <b>📈 日權重件數算分</b>：各店日目標已依商圈流量分配（南西5800、中山4800、中原2200、新竹1400）。請填寫您<b>有出席當天</b>的門市團體日銷售件數與團體 UPT。
+        📊 <b>排班規章：</b>五六日全勤另<b>外加 2.5 分</b>；跨店支援<b>每支援一天外加 1 分</b>（南西店改為<b>外加 1.5 分</b>）。
     </div>
     
     <div class="section" style="overflow-x: auto;">
         <table class="schedule-table">
             <thead>
                 <tr>
-                    <th style="width: 10%;">項目 / 星期</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th><th>日</th>
+                    <th style="width: 12%;">項目 / 星期</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th><th>日</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td style="background:#f8f9fa; font-weight:bold;">1. 當日有出席</td>
-                    <td><input type="checkbox" id="attend_1" checked></td><td><input type="checkbox" id="attend_2" checked></td>
-                    <td><input type="checkbox" id="attend_3" checked></td><td><input type="checkbox" id="attend_4" checked></td>
-                    <td><input type="checkbox" id="attend_5" checked></td><td><input type="checkbox" id="attend_6">留空/休</td>
-                    <td><input type="checkbox" id="attend_7">留空/休</td>
+                    <td><input type="checkbox" id="attend_1" checked onchange="syncDutyDays()"></td>
+                    <td><input type="checkbox" id="attend_2" checked onchange="syncDutyDays()"></td>
+                    <td><input type="checkbox" id="attend_3" checked onchange="syncDutyDays()"></td>
+                    <td><input type="checkbox" id="attend_4" checked onchange="syncDutyDays()"></td>
+                    <td><input type="checkbox" id="attend_5" checked onchange="syncDutyDays()"></td>
+                    <td><input type="checkbox" id="attend_6" onchange="syncDutyDays()">留空/休</td>
+                    <td><input type="checkbox" id="attend_7" onchange="syncDutyDays()">留空/休</td>
                 </tr>
                 <tr>
                     <td style="background:#f8f9fa; font-weight:bold;">2. 上班門市</td>
@@ -145,122 +139,78 @@
         </table>
     </div>
 
-    <!-- 第二大項：每日開開店/閉店與週交辦店務矩陣 -->
-    <h2>二、6/1新制·每日開店/閉店與週交辦店務矩陣 (權重：30分 - 凡未勾選者每格扣 1 分)</h2>
+    <h2>二、6/1新制·每日營運缺失雲端反查核對矩陣 (權重：30分 - 僅針對有出席之日子核對)</h2>
     <div class="rule-hint">
-        🚨 <b>6/1 最新防弊重懲機制：</b><br>
-        同仁需針對「當週所有上班出勤日」落實之店務進行勾選。<b>只要有勾選之項目，經當日主管或總部複查「未通過考核、流於形式或隱瞞缺失」者，每發現一項不合格，直接從當週「總考績」中強制重扣 1.5 分！</b>
+        ⚙️ <b>6/1 新版核對邏輯：</b> 同仁請至公司雲端查看當天被登記的缺失項目，並透過下方下拉式選單如實選取，每項常態扣減 1 分。若經反查有隱瞞欺報，每項強制重扣 1.5 分！
     </div>
     <div class="section">
-        <div class="grid-2">
-            <!-- 左側：每日營運流程核心清單 -->
-            <div class="card" id="dailyDutyList">
-                <span style="font-weight:bold; color:#0071e3; display:block; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:5px;">📋 每日早班開班、開店前就位與閉店流程核對</span>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>先開啟 LineWorks 確認本日布達以及昨日人員交代 <span class="punish-hint">(6/1新制)</span></span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>一到店即開啟照明、空調、香氛、音樂、電腦，並於開店前全部就位</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>早班零用金、POS機結帳、發票測試確認，確保開門可正常收銀結帳</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>檢查門片玻璃及全店所有鏡面，確保擦拭乾淨無指紋</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>檢查所有陳列檯面灰塵（收銀檯、展示桌櫃、中島櫃）並確實清潔擦拭</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>清除店門口垃圾、落葉、紙屑、菸蒂，維持店面門口第一門面</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>檢查地面灰塵、鏡面玻璃（更衣間、陳列下方、鞋子周圍環境）</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>全店範圍常態掃地與拖地（包含地下室、後倉、休息室、走道）</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>擦拭玻璃櫥窗、鏡子，並將所有飲料架擺放至定點指定位置</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>陳列檯面整理，定期更換人台模特兒服裝 ＆ OOTD 拍照上傳（14:00前完成）</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>每日回覆 IG ＆ 門市各社群訊息 ＆ 完成當日上傳商品照</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>確實執行並完成每日週交辦事項</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>每天 18:00 - 19:00 間巡查並確認髮夾/包包/飾品/皮帶有無缺少並及時補貨</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>現場各處死角、陳列盲區之灰塵髒污清潔，確認庫存有無未上架商品並上架</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>整理庫存，確保所有尺寸、顏色皆整理歸位；未上架之商品即時完成上架</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>整理並打包櫃台、廁所及休息區之所有垃圾，維護夜晚基本環境</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>晚班零用金確認、當日業績總結算、填寫銷售日報表</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>閉店大離場：確實關閉燈光/冷氣/音樂/香氛音響 ＆ 香氛線確認拔起</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>電腦關機、延長線主開關確認關閉、門外飲料架收進門店、打卡閉店</span></div>
-                <div class="list-item" style="background:#e3f2fd; padding:4px; border-radius:4px;"><label style="margin-bottom:0;">📝 填入當天共同閉店人員姓名：</label><input type="text" id="closing_staff_names" value="同仁A、PT夥伴" style="padding:4px; margin-top:2px;"></div>
-                <div class="list-item" style="margin-top:5px;"><label><input type="checkbox" id="break_time_done" checked> 當日正職/兼職同仁皆於 19:00 前確實排班並休息完畢</label></div>
+        <div id="dutyDaysContainer">
             </div>
 
-            <!-- 右側：每週三核心備品物料與常常駐商品盤查 + 一週七天指定交辦 -->
-            <div class="card">
-                <span style="font-weight:bold; color:#e91e63; display:block; margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:5px;">📅 每週三定期耗材、商品狀況盤點 ＆ 每日指定交辦</span>
-                <div style="background:#fff5f5; padding:10px; border-radius:6px; margin-bottom:12px; border:1px dashed #ffc0cb;">
-                    <strong style="font-size:12px; color:#c2185b;">📦 每週三耗材數量查核基準（未達標需即刻回報主管）：</strong>
-                    <div class="list-item" style="margin-top:5px;"><input type="checkbox" class="duty-item" checked> <span>小袋 (紙或塑膠) 至少 600 個</span></div>
-                    <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>中袋 ＆ 大袋 至少 400 個</span></div>
-                    <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>發票紙捲至少 10 捲 ｜ 信用卡簽單至少 10 捲</span></div>
-                    <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>收銀備用金零錢至少準備 10,000 元</span></div>
-                    <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>現場常駐款項鍊至少 15 款 ｜ 包包至少 5 款以上現場有現貨</span></div>
-                    <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>每週三確認商品狀況，常駐名單與 A 級是否有缺貨，並主動回報主倉</span></div>
-                    <div class="list-item"><input type="checkbox" class="duty-item" checked> <span>包包 / 帽子 / 項鍊 / 大腸圈 / 皮帶等所有飾品品項，不足時立即回報</span></div>
-                </div>
-
-                <strong style="font-size:12px; color:#333;">📆 一週七天專屬任務落實自檢：</strong>
-                <div class="list-item" style="margin-top:5px;"><input type="checkbox" class="duty-item" checked> <span><b>週一任務</b>：檢查所有商品標籤(補標)，更換陳列，拍照上傳 LineWorks，廁所大掃除加強清潔</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span><b>週二任務</b>：進貨上架、迅速整理庫存並歸位</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span><b>週三任務</b>：全面確認備品、飾品、耗材、常駐商品庫存水位</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span><b>週四任務</b>：進貨上架、後倉清查與尺寸整理歸類</span></div>
-                <div class="list-item"><input type="checkbox" class="duty-item" checked> <span><b>週五任務</b>：重複確認全店商品標籤是否正確，翻查庫存是否有未上架商品</span></div>
-                <div class="list-item" style="color:#e91e63;"><input type="checkbox" class="duty-item" checked> <span><b>週六＆週日任務</b>：門市人流尖峰期，業績衝衝衝、落實高標準服務態度！</span></div>
-                <div class="list-item" style="background:#f1f3f5; padding:6px; border-radius:6px; margin-top:10px;"><input type="checkbox" id="weekly_meeting_done" checked> <span><b>每週團隊會議</b>：當週已參與30分鐘團隊會議 (須由主管提供會議報告)</span></div>
-            </div>
+        <div class="list-item" style="background:#e3f2fd; padding:10px; border-radius:6px; margin-top:15px; border: 1px solid #b8daff;">
+            <label style="margin-bottom:0; flex:1;">📝 填入當週共同閉店同仁姓名：
+                <input type="text" id="closing_staff_names" value="同仁A、PT夥伴" style="padding:6px; margin-top:5px; width:98%;">
+            </label>
         </div>
 
-        <!-- 🔒 複查重懲違規通報 -->
-        <div class="danger-zone">
-            <strong>🚨 6/1 核心防弊反查機制核算（由主管或總部核對勾選）：</strong><br>
+        <div class="danger-zone" style="margin-top:15px;">
+            <strong>🚨 主管/總部虛報防弊反查核算（如同仁誠實申報缺失則此欄填 0）：</strong><br>
             <span>
-                本週有 <input type="number" id="fraud_items_count" value="0" min="0" style="width:50px; display:inline-block; padding:2px; text-align:center;"> 項上述已勾選之店務，<b>「經當日抽查複查未通過或流於形式」</b>。
-                <span style="color:red; font-weight:bold;">(每有 1 項複查未通過，當週總考績分數將強制加重扣除 1.5 分！)</span>
+                本週經核對雲端，發現同仁有 <input type="number" id="fraud_items_count" value="0" min="0" style="width:50px; display:inline-block; padding:2px; text-align:center;"> 項缺失「隱瞞未填報」。
+                <span style="color:red; font-weight:bold;">(每發現 1 項欺報，當週總考績分數將加重扣除 1.5 分！)</span>
             </span>
         </div>
     </div>
 
-    <!-- 三、出席日分店社群行銷與市場觀察 -->
-    <h2>三、出席日分店社群行銷與市場觀察 (權重 20% - 僅限個人出勤上班日填寫)</h2>
+    <h2>三、出席日分店社群行銷與市場商圈觀察報告 (權重 20% - 僅限個人出勤上班日填寫)</h2>
     <div class="rule-hint">
-        ℹ️ <b>出席日檢核規範：</b>請根據您在第一大項勾選的實際出席上班日，核查當天所在門市是否有切實達成以下指標。每漏發或漏回一項，依比例自本大項 20 分中扣減。
+        📝 <b>報告加分與給分規則（滿分 20 分）：</b><br>
+        1. <b>📱 社群基本功（10分）</b>：出勤當天，需確保所在門市限動發布滿 5 篇以上，且小盒子訊息確實清空回覆。<br>
+        2. <b>🧭 市場深度自述回報（10分）</b>：不流於死板打勾！請<b>直接打字填寫「50字以上」</b>之結構化報告。內容包含：當天分店商圈客流/女性人流與競品動態分享、對公司的優化建議、或是給自己的工作期許。<b>未滿50字直接不予給分</b>。
     </div>
-    <div class="section grid-2">
-        <div class="card">
-            <span class="shop-title">📱 出席日社群行銷落實</span>
-            <div class="list-item"><input type="checkbox" id="sc_posts_done" checked> <span><b>本日限動發布</b>：當天所在分店限動是否有完成發布至少 5 篇以上 <span class="punish-hint">(6月新增事項)</span></span></div>
-            <div class="list-item"><input type="checkbox" id="sc_box_done" checked> <span><b>社群小盒子回覆</b>：當天門市 IG 小盒子與各社群訊息是否有完成即時回覆顧客 <span class="punish-hint">(6月新增事項)</span></span></div>
-        </div>
-        <div class="card">
-            <span class="shop-title">🗺️ 出席日市場商圈觀察回報</span>
-            <div class="list-item"><input type="checkbox" id="market_report_done" checked> <span><b>考察回報</b>：當天出席日，是否有確實將所在分店周邊之客流、女性人流以及競品動態回報給駐點主管</span></div>
-            <div style="margin-top:5px;">
-                <label>當日商圈客流簡短心得記錄</label>
-                <input type="text" id="market_note" value="今日下午4-6點商圈女性人流穩定，競品新品上架，現場已同步向主管口頭回報。">
+    <div class="section">
+        <div class="grid-2" style="margin-bottom:15px;">
+            <div class="card">
+                <span style="font-weight:bold; color:#e91e63; display:block; margin-bottom:8px;">📱 1. 出席日門市社群行銷審查</span>
+                <label><input type="checkbox" id="sc_posts_done" checked> 當天所在分店限動已發布滿 5 篇以上</label>
+                <label style="margin-top:5px;"><input type="checkbox" id="sc_box_done" checked> 當天門市 IG 小盒子與社群訊息已全數清空回覆</label>
             </div>
+            <div class="card" style="background:#f1f3f5;">
+                <span style="font-weight:bold; color:#0071e3; display:block; margin-bottom:8px;">📊 2. 字數即時檢查安全網</span>
+                <div style="font-size:13px; font-weight:bold; color:#333; margin-top:10px;">
+                    目前輸入字數：<span id="charCountDisplay" style="color:#e91e63; font-size:18px;">0</span> 字 
+                    <span id="charStatusLabel" style="color:red; margin-left:10px;">❌ 字數未達 50 字標準 (不予給分)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <label style="color:#0071e3; font-size:14px; margin-bottom:6px;">🧭 3. 當週市場商圈觀察、概況分享、個人期許與公司反饋綜合自述欄 (限50字以上)：</label>
+            <textarea id="market_report_text" oninput="checkCharLength()" style="height:140px;" placeholder="範例（可包含：當週整體上班門市概況分享 / 給自己的工作期許 / 對於公司想反應與優化的內容）：&#10;這週支援南西店與中山店時，明顯感覺到下午4-6點的女性上班族與學生人流非常集中，附近競品這週也有新上架包包與大腸圈品項。對自己的期許是下週在搭配OOTD人台時速度能再加快。另外想向公司反應，門市的某款耗材紙袋目前存量有些偏低，建議可以提早安排補貨..."></textarea>
         </div>
     </div>
 
-    <!-- 四、學習進度與核心工作態度 -->
-    <h2>四、學習進度與核心工作態度評分 (權重 10% - 由主管覆核認定給分)</h2>
+    <h2>四、學習進度與核心工作態度評分 (權重 10% - 主管每週一專屬評定欄位)</h2>
     <div class="rule-hint">
-        💡 <b>主管考核標準：</b>此大項 10%（滿分 10 分）由駐點核心主管根據同仁對內對外的服務熱忱、日常出勤紀律、以及 22 項核心店務指標技能的「學習積極度」與「執行反饋」進行綜合考量評定。
+        ⚠️ <b>同仁行政流程規範：</b>此大項 10%（滿分 10 分）包含對內對外的服務態度與學習積極度。<b>請同仁於「每週一」主動與核心駐點主管索取分數、考核對談並填入。</b>
     </div>
     <div class="section grid-3">
         <div>
             <label>1. 對內對外服務態度評分 (0 - 5分)</label>
             <input type="number" id="manager_attitude_score" value="5" min="0" max="5" step="0.5">
-            <small style="color:#666;">（包含顧客接待熱忱與同仁協作）</small>
         </div>
         <div>
-            <label>2. 22項核心技能學習積極度 (0 - 5分)</label>
+            <label>2. 核心技能學習積極度 (0 - 5分)</label>
             <input type="number" id="manager_study_score" value="4.5" min="0" max="5" step="0.5">
-            <small style="color:#666;">（包含實操技能通關時效與主動性）</small>
         </div>
         <div>
-            <label>主管評語與工作期許</label>
-            <input type="text" id="manager_review_note" value="該同仁日常服務熱忱極佳，6月新制店務上手快速，建議持續保持。">
+            <label>主管週一開會考核評語與期許</label>
+            <input type="text" id="manager_review_note" value="該同仁日常服務熱忱極佳，6月新制自述詳盡，週一對談表現優良。">
         </div>
     </div>
 
-    <!-- 考核運算按鈕 -->
-    <button class="btn-calc" onclick="runZbcsmadeStaffKpiV2()">⚡ 執行 Zbcsmade 正職同仁全新考核系統運算</button>
+    <button class="btn-calc" onclick="runZbcsmadeStaffKpiV4()">⚡ 執行 Zbcsmade 正職同仁全新考核系統運算</button>
 
-    <!-- 評分診斷報告呈現區 -->
     <div id="resultArea" class="result-box">
         <h3 style="margin-top:0; color:#c2185b; border-bottom: 2px solid #ffb6c1; padding-bottom:8px;">📋 考核結果：【<span id="resWeek"></span>】個人綜合職責自評考核報告</h3>
         <div class="grid-2" style="margin-bottom:15px;">
@@ -275,7 +225,6 @@
 </div>
 
 <script>
-    // 智慧型日權重基準表 (月目標/4 -> 再依據一週總Mod(6.55)算出各店每日基準)
     const storeTargets = {
         '南西': { month: 5800, base: (5800 / 4) / 6.55 },
         '中山': { month: 4800, base: (4800 / 4) / 6.55 },
@@ -283,6 +232,26 @@
         '新竹': { month: 1400, base: (1400 / 4) / 6.55 }
     };
     const dayModifiers = [0.45, 0.55, 0.70, 0.70, 1.20, 1.55, 1.40];
+    const weekDayNames = ['一', '二', '三', '四', '五', '六', '日'];
+
+    const defectOptions = [
+        { value: "none", text: "✅ 當日完美無缺失 (維持不扣分)" },
+        { value: "lineworks", text: "❌ 缺失：未開 LineWorks 確認本日布達與交代事項 (-1分)" },
+        { value: "hardware", text: "❌ 缺失：未提早開啟照明/空調/香氛/音樂/電腦 (-1分)" },
+        { value: "pos_cash", text: "❌ 缺失：早/晚班零用金、POS發票確認不實 (-1分)" },
+        { value: "mirror_clean", text: "❌ 缺失：門片玻璃或店內鏡面髒污、有指紋 (-1分)" },
+        { value: "dust_clean", text: "❌ 缺失：陳列檯面(收銀、中島、展示桌)有灰塵 (-1分)" },
+        { value: "floor_clean", text: "❌ 缺失：門口有菸蒂落葉 / 店內地面、更衣室髒污 (-1分)" },
+        { value: "trash", text: "❌ 缺失：櫃台、廁所或休息室垃圾未打包清運 (-1分)" },
+        { value: "ootd_photo", text: "❌ 缺失：14:00前未完成人台更換或OOTD拍照上傳 (-1分)" },
+        { value: "replenish", text: "❌ 缺失：18:00-19:00未巡查補貨飾品/包包/皮帶 (-1分)" },
+        { value: "stock_manage", text: "❌ 缺失：未整理上架新商品 / 庫存未歸位 (-1分)" },
+        { value: "close_safe", text: "❌ 缺失：閉店冷氣音樂未關 / 香氛延長線主開關未拔 (-1分)" },
+        { value: "wed_consumable", text: "❌ 缺失：週三未確實盤點耗材袋子/發票紙/備用金 (-1分)" },
+        { value: "wed_stock", text: "❌ 缺失：週三未盤點常駐A級商品與飾品並回報主倉 (-1分)" },
+        { value: "mon_cleaning", text: "❌ 缺失：週一未完成標籤更換或廁所大掃除 (-1分)" },
+        { value: "other", text: "❌ 缺失：雲端登記之其他店務維護缺失 (-1分)" }
+    ];
 
     window.onload = function() {
         const today = new Date();
@@ -290,14 +259,72 @@
         const lastSunday = new Date();
         lastSunday.setDate(today.getDate() - today.getDay());
         document.getElementById('evaluationDate').value = lastSunday.toISOString().split('T')[0];
+        
+        syncDutyDays();
+        checkCharLength();
     };
 
-    function runZbcsmadeStaffKpiV2() {
+    // 即時檢查自述文字字數
+    function checkCharLength() {
+        const text = document.getElementById('market_report_text').value;
+        const len = text.length;
+        document.getElementById('charCountDisplay').innerText = len;
+        
+        const label = document.getElementById('charStatusLabel');
+        if (len >= 50) {
+            label.innerText = "🟢 已達50字標準 (核發 10 分)";
+            label.style.color = "green";
+        } else {
+            label.innerText = `❌ 字數未達 50 字標準 (目前缺 ${50 - len} 字，此小項不給分)`;
+            label.style.color = "red";
+        }
+    }
+
+    function syncDutyDays() {
+        const container = document.getElementById('dutyDaysContainer');
+        container.innerHTML = '';
+        let hasAnyAttendance = false;
+
+        for (let i = 1; i <= 7; i++) {
+            const isAttended = document.getElementById(`attend_${i}`).checked;
+            if (isAttended) {
+                hasAnyAttendance = true;
+                const shopName = document.getElementById(`shop_${i}`).value;
+                
+                const row = document.createElement('div');
+                row.className = 'duty-day-row';
+                
+                const titleSpan = document.createElement('span');
+                titleSpan.className = 'duty-day-title';
+                titleSpan.innerText = `星期${weekDayNames[i-1]} (${shopName}店)`;
+                
+                const selectEl = document.createElement('select');
+                selectEl.id = `defect_day_${i}`;
+                selectEl.style.flex = "1";
+                
+                defectOptions.forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt.value;
+                    option.innerText = opt.text;
+                    selectEl.appendChild(option);
+                });
+                
+                row.appendChild(titleSpan);
+                row.appendChild(selectEl);
+                container.appendChild(row);
+            }
+        }
+        if (!hasAnyAttendance) {
+            container.innerHTML = '<div style="color:red; font-size:13px; font-weight:bold; padding:10px;">⚠️ 您尚未在第一大項勾選任何上班出席日，請先完成排班勾選。</div>';
+        }
+    }
+
+    function runZbcsmadeStaffKpiV4() {
         const currentWeek = document.getElementById('weekSelect').value;
         const staffName = document.getElementById('staffName').value;
         const homeShop = document.getElementById('homeShop').value;
 
-        // --- ⏰ 填表時效扣分邏輯 ---
+        // --- 行政時效扣分 ---
         const evalDateVal = document.getElementById('evaluationDate').value;
         const submitDateVal = document.getElementById('submitDate').value;
         let delayDays = 0, delayDeduction = 0;
@@ -320,15 +347,18 @@
         const rainDays = parseInt(document.getElementById('rainyDaysDisplay').innerText) || 0;
         const weatherBonus = rainDays * 0.02;
 
-        // 一、個人排班、出席與業績運算 (權重 40分)
+        // 一、個人排班與業績 (權重 40分)
         let activeWorkingDays = 0, totalVolRate = 0, sumUpt = 0, uptDaysCount = 0;
         let supportDays = 0, nanxiSupportDays = 0;
         let attendanceLogs = [];
+        let dutyReportLogs = [];
 
         const friAttend = document.getElementById('attend_5').checked;
         const satAttend = document.getElementById('attend_6').checked;
         const sunAttend = document.getElementById('attend_7').checked;
         let weekendBonus = (friAttend && satAttend && sunAttend) ? 2.5 : 0;
+
+        let totalDefectDeduction = 0;
 
         for (let i = 1; i <= 7; i++) {
             const isAttended = document.getElementById(`attend_${i}`).checked;
@@ -340,7 +370,7 @@
 
                 if (currentShop !== homeShop) {
                     supportDays++;
-                    if (currentShop === '南西') { supportDays++; nanxiSupportDays++; } // 去南西支援一日外加1.5分
+                    if (currentShop === '南西') { supportDays++; nanxiSupportDays++; }
                 }
 
                 const shopBase = storeTargets[currentShop].base;
@@ -351,8 +381,17 @@
                 totalVolRate += dailyRate;
 
                 if (dailyUpt > 0) { sumUpt += dailyUpt; uptDaysCount++; }
-                const weekDayNames = ['一', '二', '三', '四', '五', '六', '日'];
                 attendanceLogs.push(`     ▪️ 星期${weekDayNames[i-1]}：[${currentShop}店] 團體件數:${dailyVol}件/標準:${dailyTarget.toFixed(1)}件 | UPT:${dailyUpt}`);
+
+                const defectSelect = document.getElementById(`defect_day_${i}`);
+                if (defectSelect) {
+                    const selectedVal = defectSelect.value;
+                    const selectedText = defectSelect.options[defectSelect.selectedIndex].text;
+                    if (selectedVal !== "none") {
+                        totalDefectDeduction += 1.0;
+                    }
+                    dutyReportLogs.push(`     ▪️ 星期${weekDayNames[i-1]} (${currentShop}店) 雲端核對結果 ➔ ${selectedText}`);
+                }
             }
         }
 
@@ -360,96 +399,30 @@
         let avgUpt = uptDaysCount > 0 ? (sumUpt / uptDaysCount) : 0;
         let uptScorePool = 10;
         if (avgUpt < 2.0) uptScorePool = 5.0;
-        else if (avgUpt >= 2.0 && avg_upt < 2.2) uptScorePool = 7.5;
-        else if (avgUpt >= 2.2 && avg_upt < 2.4) uptScorePool = 9.0;
+        else if (avgUpt >= 2.0 && avgUpt < 2.2) uptScorePool = 7.5;
+        else if (avgUpt >= 2.2 && avgUpt < 2.4) uptScorePool = 9.0;
 
         let total_score_one = volScore + uptScorePool + (supportDays * 1.0) + weekendBonus;
 
-        // 二、每日店務維護與指定交辦矩陣 (權重 30分)
-        const dutyItems = document.querySelectorAll('.duty-item');
-        let totalDutyItemsCount = dutyItems.length;
-        let unmanagedDutyCount = 0;
-        dutyItems.forEach(item => { if(!item.checked) unmanagedDutyCount++; });
-
-        let dutyScore = 30 - unmanagedDutyCount;
+        // 二、店務缺失雲端反查 (權重 30分)
+        let dutyScore = 30 - totalDefectDeduction;
         if(dutyScore < 0) dutyScore = 0;
 
-        // 🔥 6/1新制：反查舞弊未通過加重扣分題 (扣當週總分 1.5分/項)
         const fraudItemsCount = parseInt(document.getElementById('fraud_items_count').value) || 0;
         let fraudDeduction = fraudItemsCount * 1.5;
 
-        // 三、出席日社群行銷與市場觀察 (權重 20分)
-        let socialMarketScore = 20;
+        // 三、出席日社群行銷與市場觀察報告 (核心字數判定邏輯)
+        let socialMarketScore = 0;
+        let sc_msg = "";
         if(activeWorkingDays > 0) {
-            if(!document.getElementById('sc_posts_done').checked) socialMarketScore -= 6.5;
-            if(!document.getElementById('sc_box_done').checked) socialMarketScore -= 6.5;
-            if(!document.getElementById('market_report_done').checked) socialMarketScore -= 7.0;
-        }
-        if(socialMarketScore < 0) socialMarketScore = 0;
-
-        // 四、主管綜合評定給分 (權重 10分)
-        const m_attitude = parseFloat(document.getElementById('manager_attitude_score').value) || 0;
-        const m_study = parseFloat(document.getElementById('manager_study_score').value) || 0;
-        let managerTotalScore = m_attitude + m_study;
-
-        // 最終分數統計 (扣除延遲繳交與複查舞弊)
-        let totalScore = total_score_one + dutyScore + socialMarketScore + managerTotalScore - fraudDeduction - delayDeduction;
-        if (totalScore > 100) totalScore = 100;
-        if (totalScore < 0) totalScore = 0;
-
-        let grade = "C (需高度加強，列入不適任輔導名單)";
-        if (totalScore >= 92) grade = "A+ (卓越優秀，店務與業績完美落實)";
-        else if (totalScore >= 85) grade = "A (標準正常達標)";
-        else if (totalScore >= 75) grade = "B (部分日常職責需改進)";
-        else if (totalScore >= 70) grade = "C+ (績效落後警告)";
-
-        document.getElementById('resWeek').innerText = currentWeek;
-        document.getElementById('totalScore').innerText = totalScore.toFixed(1);
-        document.getElementById('gradeText').innerText = grade;
-        document.getElementById('resultArea').style.display = "block";
-
-        // 生成複製文本
-        let text = `📊 【Zbcsmade 正職同仁綜合職責週度考核自評報告】\n`;
-        text += `👤 同仁姓名：${staffName}  |  🏠 編制主屬：${homeShop}店\n`;
-        text += `📅 考核週期：${currentWeek}  |  📬 自評繳交日：${submitDateVal || '未填'}\n`;
-        text += `⏰ 行政時效查核：${delayMsg}\n`;
-        text += `====================================\n`;
-        text += `1️⃣ 個人出席班表與業績數據管控：${total_score_one.toFixed(1)} 分 (滿分40+外加分)\n`;
-        attendanceLogs.forEach(log => { text += `${log}\n`; });
-        text += `   - 本週实际出勤天數：${activeWorkingDays} 天 | 出勤日平均 UPT：${avgUpt.toFixed(2)}\n`;
-        if(weekendBonus > 0) text += `   - ✨ 週末獎勵：配合五六日全勤排班，考核外加 +2.5 分\n`;
-        if(supportDays > 0) text += `   - 🚗 支援獎勵：本週完成跨店/高壓南西支援，外加 +${((supportDays*1)+(nanxiSupportDays*0.5)).toFixed(1)} 分\n`;
-        
-        text += `2️⃣ 6/1新制·每日與週交辦店務矩陣：${dutyScore.toFixed(1)} 分 (滿分30)\n`;
-        text += `   - 漏做/未完成之基礎店務項目扣分：-${unmanagedDutyCount} 分\n`;
-        text += `   - 共同閉店人員登錄：${document.getElementById('closing_staff_names').value}\n`;
-        if(fraudItemsCount > 0) {
-            text += `   🚨 【6/1新制·當日複查違規重懲】：經主管反查有 ${fraudItemsCount} 項店務涉嫌虛報未通過，強制加重扣除當週總分 -${fraudDeduction} 分！\n`;
-        } else {
-            text += `   - ✅ 複查狀態：本週已勾選店務經抽查複查，皆全數符合標準流程。\n`;
-        }
-
-        text += `3️⃣ 出席日分店社群行銷與市場商圈觀察：${socialMarketScore.toFixed(1)} 分 (滿分20)\n`;
-        text += `   - 📱 6月社群限動(5篇+)與小盒子處理：${document.getElementById('sc_posts_done').checked ? '已達成' : '❌ 未完成扣分'}\n`;
-        text += `   - 🗺️ 每日出席日商圈市場觀察與心得回報：${document.getElementById('market_report_done').checked ? '已確實繳交' : '❌ 缺漏扣分'}\n`;
-        text += `   - 📝 當週商圈觀察備註：${document.getElementById('market_note').value}\n`;
-
-        text += `4️⃣ 學習進度與核心工作態度 (10% 主管核定)：${managerTotalScore.toFixed(1)} 分 (滿分10)\n`;
-        text += `   - 主管評定服務熱忱/團隊協作分：${m_attitude} 分 ｜ 技能積極度：${m_study} 分\n`;
-        text += `   - ✍️ 主管覆核期許與評語：${document.getElementById('manager_review_note').value}\n`;
-        text += `------------------------------------\n`;
-        text += `🎯 當週個人核心最終總得分：${totalScore.toFixed(1)} 分 ➔ 綜合等第：${grade}\n`;
-        text += `💡 提示：本自評報告將存檔連動。凡涉及 6/1 複查未過之舞弊項目將重懲，其餘分數將常態作為季度發薪與晉升提報依據。`;
-
-        document.getElementById('summaryOutput').value = text;
-    }
-
-    function copyKpiText() {
-        const txt = document.getElementById('summaryOutput');
-        txt.select();
-        document.execCommand('copy');
-        alert('Zbcsmade 正職 V2 精細版考核報告已複製成功！');
-    }
-</script>
-</body>
-</html>
+            // 社群基本功部分 (各佔5分)
+            let sc_base = 10;
+            if(!document.getElementById('sc_posts_done').checked) sc_base -= 5;
+            if(!document.getElementById('sc_box_done').checked) sc_base -= 5;
+            
+            // 深度自述部分 (佔10分，嚴格執行字數反查)
+            let text_report = document.getElementById('market_report_text').value;
+            let report_score = 0;
+            if (text_report.length >= 50) {
+                report_score = 10;
+                sc
