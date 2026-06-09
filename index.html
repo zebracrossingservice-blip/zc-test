@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zbcsmade 正職同仁週度自評考核系統 V11</title>
+    <title>Zbcsmade 正職同仁週度自評考核系統 V12</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f9; color: #1c1c1e; margin: 0; padding: 20px; line-height: 1.5; }
         .container { max-width: 1250px; background: white; margin: 0 auto; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
@@ -15,6 +15,7 @@
         .grid-flex { display: flex; flex-wrap: wrap; gap: 15px; }
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
         .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; color: #333; }
         .input-desc { font-size: 11px; color: #666; margin-bottom: 6px; }
@@ -41,7 +42,7 @@
 
 <div class="container">
     <h1>Zbcsmade 正職同仁週度自評與考核系統</h1>
-    <div class="subtitle">營運核心：每日天氣適地補償 / 雲端缺失加重重懲 / 紀律大忌重罰 / 22項實操與特貢加分完全體</div>
+    <div class="subtitle">營運核心：每日天氣適地補償 / 雲端缺失加重重懲 / 主管短評認證 / 22項實操與特貢完全體</div>
 
     <h2>基本考核設定 & 天氣環境與繳交時效修正機制</h2>
     <div class="rule-hint">
@@ -82,7 +83,7 @@
 
     <h2>一、個人出席班表與業績管控 (權重：件數達標率 30分 + UPT 7日均分 10分 + 支援與全勤加分)</h2>
     <div class="rule-hint">
-         Bars <b>排班規章：</b>五六日全勤外加 <b>+2.5 分</b>；中山南西編制同仁於南西大店出勤每日外加 <b>+0.5 分</b>；其餘縣市跨商圈支援每日外加 <b>+1 分</b>。<br>
+        📊 <b>排班規章：</b>五六日全勤外加 <b>+2.5 分</b>；中山南西編制同仁於南西大店出勤每日外加 <b>+0.5 分</b>；其餘縣市跨商圈支援每日外加 <b>+1 分</b>。<br>
         📈 <b>UPT 得分標準</b>：UPT >= 2.4 (10分) ｜ 2.2 ~ 2.39 (9分) ｜ 2.0 ~ 2.19 (7.5分) ｜ 低於 2.0 (5分)。
     </div>
     
@@ -144,10 +145,7 @@
 
     <h2>二、6/1新制·每日營運缺失雲端反查核對矩陣 (權重：30分 - 採出席日有缺失才手動新增登錄)</h2>
     <div class="rule-hint">
-        ⚙️ <b>6/1 扣分加重新規：</b> 請同仁依據雲端紀錄申報。系統將嚴格執行雙軌加重扣分：<br>
-        🔴 <b>【未施作項目（直接擺爛沒做）】</b>：每出現一項，總分直接<b>加重扣除 2 分</b>！<br>
-        🟡 <b>【有施作，經複檢未達標（有做沒做好）】</b>：每出現一項，總分直接<b>扣除 1 分</b>！<br>
-        <span style="color:#d32f2f; font-weight:bold;">🚨 總部防弊鐵律：若雲端有紀錄卻故意隱瞞不申報，主管抽查一項直接從總考績強制追加重扣 1.5 分！</span>
+        ⚙️ <b>6/1 扣分加重新規：</b> 請同仁依據雲端紀錄申報。未施作項目每項<b>加重扣除 2 分</b>；有施作未達標每項<b>扣除 1 分</b>！隱瞞欺報查獲者加重扣減 1.5 分/項。
     </div>
     <div class="section">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
@@ -176,22 +174,51 @@
         </div>
     </div>
 
-    <h2>三、出席日分店市場商圈觀察自述報告 (權重 20% - 僅限個人出勤上班日填寫)</h2>
+    <h2>三、出席日分店市場商圈觀察報告 與 主管日常心態會審 (權重：個人自述 10分 + 主管考核 10分)</h2>
     <div class="rule-hint">
-        🧭 <b>深度自述規範（佔20分）：</b>請直接輸入 <b>50 字以上</b>之當週整體上班門市概況分享、商圈客流考察、給自己的工作期許或對於公司想反應的內容。<b>字數未滿 50 字系統直接判定 0 分。</b>
+        🧭 <b>雙軌考核規範（共20分）：</b><br>
+        1. <b>同仁商圈深度自述（10分）</b>：請同仁手動輸入 <b>50 字以上</b>的心得。字數未滿 50 字系統直接判定 0 分。<br>
+        2. <b>👑 主管日常服務與學習短評（10分）</b>：由主管依據同仁日常「服務態度」與「學習態度」各給予最高 5 分。<b>請同仁於每週一主動與核心主管對談復盤並索取分數與短評！</b>
     </div>
     <div class="section">
-        <div style="background:#f1f3f5; padding:10px; border-radius:6px; margin-bottom:12px; font-weight:bold; font-size:13px;">
-            📊 結構化文字字數安全網：目前輸入字數：<span id="charCountDisplay" style="color:#e91e63; font-size:18px;">0</span> 字 
-            <span id="charStatusLabel" style="color:red; margin-left:10px;">❌ 字數未達 50 字標準 (不予給分)</span>
+        <div class="grid-2" style="margin-bottom:12px;">
+            <div class="card" style="background:#f1f3f5; display:flex; align-items:center; justify-content:space-between; padding:10px 15px;">
+                <div style="font-size:13px; font-weight:bold; color:#333;">
+                    📊 同仁自述字數檢查：<span id="charCountDisplay" style="color:#e91e63; font-size:18px;">0</span> 字
+                </div>
+                <span id="charStatusLabel" style="color:red; font-weight:bold; font-size:12px;">❌ 未達50字大限</span>
+            </div>
+            <div class="card" style="background:#e3f2fd; padding:10px 15px; font-size:12px; font-weight:bold; color:#0d47a1; display:flex; align-items:center;">
+                ⚠️ 流程提示：週一開會請務必與主管核對「態度評分」與「團隊短評備註」後填入。
+            </div>
         </div>
-        <textarea id="market_report_text" oninput="checkCharLength()" style="height:140px;" placeholder="請在此輸入至少50字之綜合心得、公司建議與自我期許反饋..."></textarea>
+
+        <div class="grid-2">
+            <div class="card">
+                <label style="color:#e91e63;">🧭 1. 同仁市場商圈觀察與綜合分享自述欄 (滿分10分 / 限填50字以上)：</label>
+                <textarea id="market_report_text" oninput="checkCharLength()" style="height:155px;" placeholder="請在此填寫至少50字的心得、個人自省或公司優化建議..."></textarea>
+            </div>
+            <div class="card" style="border: 1px solid #b8daff; background:#f7faff;">
+                <span style="font-weight:bold; color:#0071e3; display:block; margin-bottom:8px;">👑 2. 核心主管專屬日常考評與短評區 (滿分10分)</span>
+                <div class="grid-2" style="margin-bottom:8px;">
+                    <div>
+                        <label>日常服務態度 (0-5分)</label>
+                        <input type="number" id="manager_attitude_score" value="5" min="0" max="5" step="0.5">
+                    </div>
+                    <div>
+                        <label>日常學習態度 (0-5分)</label>
+                        <input type="number" id="manager_study_score" value="5" min="0" max="5" step="0.5">
+                    </div>
+                </div>
+                <label style="color:#333;">主管給該正職成員的「本週短評備註」：</label>
+                <input type="text" id="manager_staff_review" value="該員本週日常服務熱忱極高，配合調班積極度高，新制店務對應流暢。" style="background:white;">
+            </div>
+        </div>
     </div>
 
     <h2>四、22項核心指標技能實操自檢清單 (權重 10% - 每少一項精準扣 0.5 分)</h2>
     <div class="rule-hint">
-        🛠️ <b>技能清單核算規章：</b> 滿分 10 分。請同仁如實勾選目前已通過主管考核認證的技能。<b>每漏勾一項，直接扣除 0.5 分。</b><br>
-        ⚠️ <b>行政流程要求：</b> 每週一請主動與核心駐點主管進行對談復盤，並請主管在最下方給予當週考核評語與期許。
+        🛠️ <b>技能清單核算規章：</b> 滿分 10 分。請同仁如實勾選目前已通過主管考核認證的技能。<b>每漏勾一項，直接扣除 0.5 分。</b>
     </div>
     <div class="section">
         <div style="margin-bottom: 12px; font-weight: bold; background: #e3f2fd; padding: 8px; border-radius: 6px; color: #0d47a1;">
@@ -222,12 +249,7 @@
             <div class="skill-item"><input type="checkbox" class="skill-chk" checked> 21. 行銷運用</div>
             <div class="skill-item"><input type="checkbox" class="skill-chk" checked> 22. 了解每日回報關鍵與如何回報</div>
         </div>
-
-        <div style="margin-top:15px;" class="grid-2">
-            <div><label>主管週一審查工作評語與去留激勵期許 (週一主動與主管索取填入)</label>
-            <input type="text" id="manager_review_note" value="該同仁本週店務自評誠實，22項指標實操熟練，下週持續保持。"></div>
-            <div class="danger-zone" style="margin-top:22px;"><input type="checkbox" id="cheat_trigger"> <b>【主管反查技能舞弊】</b>經查核心技能有虛報不實，此大項強制以 0 分重懲。</div>
-        </div>
+        <div class="danger-zone" style="margin-top:12px;"><input type="checkbox" id="cheat_trigger"> <b>【主管反查技能舞弊】</b>經主管核對若發現指標有虛報不實，此技能清單大項強制以 0 分處罰重懲。</div>
     </div>
 
     <h2>五、重大工作紀律、大忌與紅線事故審查 (直接自當週「最終總分」強制扣減)</h2>
@@ -281,7 +303,7 @@
         </div>
     </div>
 
-    <button class="btn-calc" onclick="runZbcsmadeStaffKpiV11()">⚡ 執行 Zbcsmade 正職同仁全新考核系統運算</button>
+    <button class="btn-calc" onclick="runZbcsmadeStaffKpiV12()">⚡ 執行 Zbcsmade 正職同仁全新考核系統運算</button>
 
     <div id="resultArea" class="result-box">
         <h3 style="margin-top:0; color:#c2185b; border-bottom: 2px solid #ffb6c1; padding-bottom:8px;">📋 考核結果：【<span id="resWeek"></span>】個人綜合職責自評考核報告</h3>
@@ -321,10 +343,10 @@
         "社群回復：每日回覆 IG 門市訊息 ＆ 商品照上傳完成",
         "任務執行：確實落實並完成每日週交辦事項",
         "【每週三耗材限額】小袋(紙或塑膠)不足 600 個 ｜ 中袋-大袋不足 400 個",
-        "【每週三耗材限額】發票紙捲/信用卡簽單不足 10 捲",
+        "【每週推紙捲/簽單】發票紙捲/信用卡簽單不足 10 捲",
         "【每週三備用金】門市備用金零錢不足 10,000 元",
         "【每週三常駐款】項鍊不足 15 款 ｜ 包包不足 5 款有貨",
-        "【每週三商品反查】常駐商品與 A 級缺貨未回報主倉",
+        "【每週三商品反查】常駐商品與 A 級缺貨未回記主倉",
         "【每週三飾品反查】包包/帽子/大腸圈/皮帶不足未回報",
         "【6月新增社群】本日門市限動未發滿 5 篇以上",
         "【6月新增社群】本日小盒子與社群未回覆顧客訊息",
@@ -360,10 +382,10 @@
         document.getElementById('charCountDisplay').innerText = text.length;
         const label = document.getElementById('charStatusLabel');
         if (text.length >= 50) {
-            label.innerText = "🟢 已達50字標準 (核發 20 分)";
+            label.innerText = "🟢 已達50字標準 (核發 10 分)";
             label.style.color = "green";
         } else {
-            label.innerText = `❌ 字數未達 50 字標準 (目前缺 ${50 - text.length} 字，此大項不給分)`;
+            label.innerText = `❌ 未達50字標準 (缺 ${50 - text.length} 字 / 本項0分)`;
             label.style.color = "red";
         }
     }
@@ -404,7 +426,7 @@
         }
     }
 
-    function runZbcsmadeStaffKpiV11() {
+    function runZbcsmadeStaffKpiV12() {
         const currentWeek = document.getElementById('weekSelect').value;
         const staffName = document.getElementById('staffName').value;
         const homeShop = document.getElementById('homeShop').value;
@@ -427,10 +449,6 @@
                 delayMsg = `⚠️ 延遲填表扣分：已延誤 ${delayDays} 天提交 ➔ 強制扣除 ${delayDeduction.toFixed(1)} 分！`;
             }
         }
-
-        // 天氣補償
-        const rainDays = parseInt(document.getElementById('rainyDaysDisplay').innerText) || 0;
-        const weatherBonus = rainDays * 0.02;
 
         // 一、個人排班與業績 (40分)
         let activeWorkingDays = 0, totalVolRate = 0, sumUpt = 0, uptDaysCount = 0;
@@ -509,17 +527,25 @@
         const fraudItemsCount = parseInt(document.getElementById('fraud_items_count').value) || 0;
         let fraudDeduction = fraudItemsCount * 1.5;
 
-        // 三、出席日深度自述 (20分)
-        let socialMarketScore = 0;
+        // 三、出席日深度自述報告 (修正為：自述10分 + 主管考核態度與短評10分)
+        let report_score = 0;
         let sc_msg = "";
         let text_report = document.getElementById('market_report_text').value;
         if (text_report.length >= 50) {
-            socialMarketScore = 20;
-            sc_msg = "✅ 自述內容量符合 50 字標準，成功發放 20 分滿分！";
+            report_score = 10;
+            sc_msg = "✅ 自述內容量符合 50 字標準，核發個人自述項 10 分滿分！";
         } else {
-            socialMarketScore = 0;
-            sc_msg = `❌ 自述內容量未達 50 字限制 (目前僅 ${text_report.length} 字)，此大項分數直接以 0 分全面核算。`;
+            report_score = 0;
+            sc_msg = `❌ 自述內容量未達 50 字限制 (目前僅 ${text_report.length} 字)，此自述小項直接以 0 分核算。`;
         }
+        
+        // 主管考核態度分 (最高10分)
+        const m_attitude = parseFloat(document.getElementById('manager_attitude_score').value) || 0;
+        const m_study = parseFloat(document.getElementById('manager_study_score').value) || 0;
+        let managerAttitudeTotal = m_attitude + m_study;
+        const managerReviewText = document.getElementById('manager_staff_review').value;
+
+        let thirdSectionTotalScore = report_score + managerAttitudeTotal;
 
         // 四、22項核心技能實操清單 (10分)
         const skillBoxes = document.querySelectorAll('.skill-chk');
@@ -530,7 +556,7 @@
         if(skillScore < 0) skillScore = 0;
         if (document.getElementById('cheat_trigger').checked) skillScore = 0; 
 
-        // 五、重大紅線事故大忌扣分 (新增個人因素及排班遲到合約條款)
+        // 五、重大紅線事故大忌扣分 (直接扣總分)
         let taboo_deduction = 0;
         taboo_deduction += parseFloat(document.getElementById('taboo_complaint').value) || 0;
         taboo_deduction += parseFloat(document.getElementById('taboo_cash').value) || 0;
@@ -550,7 +576,7 @@
         if(document.getElementById('bonus_proposal').checked) specialBonusScore += 3.0;
 
         // 總得分綜合匯總
-        let totalScore = total_score_one + dutyScore + socialMarketScore + skillScore + specialBonusScore - fraudDeduction - delayDeduction - taboo_deduction;
+        let totalScore = total_score_one + dutyScore + thirdSectionTotalScore + skillScore + specialBonusScore - fraudDeduction - delayDeduction - taboo_deduction;
         if (totalScore > 100) totalScore = 100;
         if (totalScore < 0) totalScore = 0;
 
@@ -566,36 +592,35 @@
         document.getElementById('resultArea').style.display = "block";
 
         // 生成複製純文字
-        let text = `📊 【Zbcsmade 正職同仁綜合職責週度考核自評報告 V11】\n`;
+        let text = `📊 【Zbcsmade 正職同仁綜合職責週度考核自評報告 V12】\n`;
         text += `👤 同仁姓名：${staffName}  |  🏠 編制主屬：${homeShop}店\n`;
         text += `📅 考核週期：${currentWeek}  |  📬 自評繳交日：${submitDateVal || '未填'}\n`;
         text += `⏰ 行政時效查核：${delayMsg}\n`;
         text += `====================================\n`;
         text += `1️⃣ 個人出席班表與業績數據管控：${total_score_one.toFixed(1)} 分 (滿分40+外加分)\n`;
         attendanceLogs.forEach(log => { text += `${log}\n`; });
-        text += `   - 當週實際出勤上班天數：${activeWorkingDays} 天\n`;
-        text += `   - 當週團隊平均 UPT 表現：${avgUpt.toFixed(2)} ➔ UPT得分：${uptScorePool.toFixed(1)} 分\n`;
+        text += `   - 當週實際出勤上班天數：${activeWorkingDays} 天 | 團體平均 UPT：${avgUpt.toFixed(2)} ➔ UPT得分：${uptScorePool.toFixed(1)} 分\n`;
         if(weekendBonus > 0) text += `   - ✨ 週末全勤獎勵：五六日三天皆配合出勤上班，考核外加 +2.5 分\n`;
-        if(supportBonusScore > 0) text += `   - 🚗 支援津貼加分：基本跨店支援 ${remoteSupportDays} 天 ｜ 南西大店高壓出勤 ${nanxiHighPressureDays} 天 ➔ 外加 +${supportBonusScore.toFixed(1)} 分\n`;
+        if(supportBonusScore > 0) text += `   - 🚗 支援與戰區出勤津貼外加：+${supportBonusScore.toFixed(1)} 分\n`;
         
         text += `\n2️⃣ 6/1新制·雲端缺失加重反查明細：${dutyScore.toFixed(1)} 分 (滿分30)\n`;
         if(defectRows.length > 0) {
             defectReportLogs.forEach(log => { text += `${log}\n`; });
-            text += `   - 常態缺失統計：未施作 ${unexecutedCount} 項(重扣2.5分/項)｜未達標 ${subStandardCount} 項(扣1分/項) ➔ 共扣 -${totalDefectDeduction} 分\n`;
+            text += `   - 常態缺失統計：未施作 ${unexecutedCount} 項(重扣2分/項)｜未達標 ${subStandardCount} 項(扣1分/項) ➔ 共扣 -${totalDefectDeduction} 分\n`;
         } else {
             text += `   - ✅ 雲端核對結果：當週在雲端完全無任何店務維護缺失紀錄，取得滿分 30 分！\n`;
         }
-        text += `   - 當週共同閉店同仁：${document.getElementById('closing_staff_names').value}\n`;
         if(fraudItemsCount > 0) text += `   🚨 【總部反查欺報重懲】：經主管反查隱瞞 ${fraudItemsCount} 項缺失未報，強制扣除總分 -${fraudDeduction} 分！\n`;
 
-        text += `\n3️⃣ 出席日分店市場商圈自述報告：${socialMarketScore.toFixed(1)} 分 (滿分20)\n`;
-        text += `   - 🧭 市場綜合心得自述判定：${sc_msg}\n`;
+        text += `\n3️⃣ 市場商圈自述報告 與 主管日常心態會審：${thirdSectionTotalScore.toFixed(1)} 分 (滿分20)\n`;
+        text += `   - 🧭 同仁市場綜合心得自述判定：${sc_msg}\n`;
         text += `   - 📝 同仁申報自述與反饋內容：\n     ${text_report}\n`;
+        text += `   - 👑 主管評定日常服務心態分：${m_attitude} 分 ｜ 日常學習態度分：${m_study} 分\n`;
+        text += `   - 💬 主管給該正職成員的本週短評備註：${managerReviewText}\n`;
 
         text += `\n4️⃣ 22項核心指標技能實操自檢項目：${skillScore.toFixed(1)} 分 (滿分10)\n`;
         text += `   - 目前認證通過核心指標技能數：共計 ${checkedSkillsCount} / 22 項\n`;
         if(checkedSkillsCount < 22) text += `   - 💡 技能落後扣分：尚有 ${22 - checkedSkillsCount} 項未通關，共計扣除 -${(22 - checkedSkillsCount)*0.5} 分\n`;
-        text += `   - ✍️ 主管週一會審對談期許與評語：${document.getElementById('manager_review_note').value}\n`;
         if(document.getElementById('cheat_trigger').checked) text += `   🚨 【主管反查核技能舞弊】：經查技能實操涉及蓄意虛報，此大項強制以 0 分重懲！\n`;
 
         if(specialBonusScore > 0) {
@@ -620,8 +645,8 @@
         }
 
         text += `------------------------------------\n`;
-        text += `🎯 當週個人核心最終總得分：${totalScore.toFixed(1)} 分 ➔ 綜合等等第：${grade}\n`;
-        text += `💡 提示：本表單 V11 終極完全體已正式就位。每週一請同仁主動與核心主管索取第四大項評語，確認無誤後複製報告。`;
+        text += `🎯 當週個人核心最終總得分：${totalScore.toFixed(1)} 分 ➔ 綜合等第：${grade}\n`;
+        text += `💡 提示：本表單 V12 主管日常會審短評優化版已正式啟用。每週一請主動與核心主管索取第三大項分數與評語，確認無誤後複製報告。`;
 
         document.getElementById('summaryOutput').value = text;
     }
@@ -630,7 +655,7 @@
         const txt = document.getElementById('summaryOutput');
         txt.select();
         document.execCommand('copy');
-        alert('Zbcsmade 正職 V11 終極完全體報告已複製成功！');
+        alert('Zbcsmade 正職 V12 主管短評加強版報告已成功複製！');
     }
 </script>
 </body>
