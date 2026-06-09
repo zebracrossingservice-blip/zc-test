@@ -153,3 +153,404 @@
                 <tr>
                     <th style="width: 12%;">發生日期</th>
                     <th style="width: 12%;">發生分店</th>
+                    <th style="width: 50%;">具體店務不合格細項 (對照公司6/1新規與交辦)</th>
+                    <th style="width: 18%;">複查懲處判定</th>
+                    <th style="width: 8%;">操作</th>
+                </tr>
+            </thead>
+            <tbody id="defectTableBody">
+                </tbody>
+        </table>
+        
+        <div id="noDefectNotice" style="text-align:center; color:#2e7d32; font-weight:bold; padding:20px; background:#fff; border-radius:6px; margin-top:10px; border:1px dashed #a5d6a7;">
+            ✅ 目前無新增任何缺失紀錄 (若當週在雲端完全無店務缺失，此大項將直接獲得滿分 30 分)
+        </div>
+
+        <div class="grid-2" style="margin-top:20px; gap:15px;">
+            <div class="card">
+                <label>📝 填入當週共同閉店同仁姓名 (打給老闆看)</label>
+                <input type="text" id="closing_staff_names" value="同仁A、PT夥伴">
+            </div>
+            <div class="card" style="background:#fffde7; border: 1px solid #fff59d;">
+                <label style="color:#f57f17;">⏳ 每日正職 / 兼職人員休息時段檢核</label>
+                <select id="break_time_status">
+                    <option value="正常">當週所有出席上班日，全員皆於 19:00 前確實休息完畢 (及格)</option>
+                    <option value="違規">發生人員於 19:00 以後才休息狀況 (視為店務流程疏漏扣分)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="danger-zone" style="margin-top:20px;">
+            <strong>🚨 主管/總部反查欺報懲罰（同仁誠實按雲端申報則此欄填 0）：</strong><br>
+            <span>
+                本週複查內部勾選項目，發現同仁共有 <input type="number" id="fraud_items_count" value="0" min="0" style="width:50px; display:inline-block; padding:2px; text-align:center;"> 項缺失「隱瞞未在上方新增登錄」。
+                <span style="color:red; font-weight:bold;">(每漏報/欺報 1 項，當週最終總考績強制追加扣除 1.5 分！)</span>
+            </span>
+        </div>
+    </div>
+
+    <h2>三、出席日分店社群行銷與市場商圈觀察報告 (權重 20% - 僅限個人出勤上班日填寫)</h2>
+    <div class="rule-hint">
+        📝 <b>字數與指標門檻：</b><br>
+        1. <b>📱 社群基本功（10分）</b>：出勤日分店限動有發滿 5 篇以上，且小盒子與社群訊息已全數清空回覆。<br>
+        2. <b>🧭 市場綜合深度自述（10分）</b>：請<b>直接輸入 50 字以上</b>之當週整體上班門市概況分享、商圈客流考察、給自己的工作期許或對於公司想反應的內容。<b>未滿50字系統直接判定 0 分</b>。
+    </div>
+    <div class="section">
+        <div class="grid-2" style="margin-bottom:15px;">
+            <div class="card">
+                <span style="font-weight:bold; color:#e91e63; display:block; margin-bottom:8px;">📱 1. 出席日門市社群行銷審查</span>
+                <label><input type="checkbox" id="sc_posts_done" checked> 當天所在分店限動已發布滿 5 篇以上</label>
+                <label style="margin-top:5px;"><input type="checkbox" id="sc_box_done" checked> 當天門市 IG 小盒子與社群訊息已全數清空回覆</label>
+            </div>
+            <div class="card" style="background:#f1f3f5;">
+                <span style="font-weight:bold; color:#0071e3; display:block; margin-bottom:8px;">📊 2. 結構化文字字數安全網</span>
+                <div style="font-size:13px; font-weight:bold; color:#333; margin-top:10px;">
+                    目前輸入字數：<span id="charCountDisplay" style="color:#e91e63; font-size:18px;">0</span> 字 
+                    <span id="charStatusLabel" style="color:red; margin-left:10px;">❌ 字數未達 50 字標準 (不予給分)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <label style="color:#0071e3; font-size:14px; margin-bottom:6px;">🧭 3. 門市概況分享 / 個人工作期許 / 公司反饋與建議綜合自述區 (限50字以上)：</label>
+            <textarea id="market_report_text" oninput="checkCharLength()" style="height:140px;" placeholder="請在此輸入至少50字之綜合心得反饋..."></textarea>
+        </div>
+    </div>
+
+    <h2>四、學習進度與核心工作態度評分 (權重 10% - 主管每週一專屬評定欄位)</h2>
+    <div class="rule-hint">
+        💡 <b>行政流程要求：</b>此大項 10% 由主管考核。<b>請同仁於「每週一」主動與核心主管索取考核分數、對內對外服務態度評語後填入。</b>
+    </div>
+    <div class="section grid-3">
+        <div>
+            <label>1. 對內對外服務態度評分 (0 - 5分)</label>
+            <input type="number" id="manager_attitude_score" value="5" min="0" max="5" step="0.5">
+        </div>
+        <div>
+            <label>2. 核心技能學習積極度 (0 - 5分)</label>
+            <input type="number" id="manager_study_score" value="4.5" min="0" max="5" step="0.5">
+        </div>
+        <div>
+            <label>主管週一會議考核評語與工作期許</label>
+            <input type="text" id="manager_review_note" value="該同仁日常服務熱忱極佳，6月新制自述詳盡，週一對談表現優良。">
+        </div>
+    </div>
+
+    <button class="btn-calc" onclick="runZbcsmadeStaffKpiV5()">⚡ 執行 Zbcsmade 正職同仁全新考核系統運算</button>
+
+    <div id="resultArea" class="result-box">
+        <h3 style="margin-top:0; color:#c2185b; border-bottom: 2px solid #ffb6c1; padding-bottom:8px;">📋 考核結果：【<span id="resWeek"></span>】個人綜合職責自評考核報告</h3>
+        <div class="grid-2" style="margin-bottom:15px;">
+            <div style="font-size: 20px; font-weight: bold; color:#c2185b;">當週個人最終得分：<span id="totalScore" style="font-size:32px; color:#e91e63;">0</span> 分</div>
+            <div style="font-size: 16px; font-weight: bold; color:#c2185b;">當週考核評定等第：<span id="gradeText" style="font-size:20px;">-</span></div>
+        </div>
+        
+        <h4 style="margin-bottom:5px; margin-top:20px; color:#c2185b;">📋 系統自動生成之結構化自評文本 (一鍵複製發送給主管覆核)</h4>
+        <textarea id="summaryOutput" class="summary-text" readonly></textarea>
+        <button class="btn-copy" onclick="copyKpiText()">📋 一鍵複製個人週度考核報告</button>
+    </div>
+</div>
+
+<script>
+    const storeTargets = {
+        '南西': { month: 5800, base: (5800 / 4) / 6.55 },
+        '中山': { month: 4800, base: (4800 / 4) / 6.55 },
+        '中原': { month: 2200, base: (2200 / 4) / 6.55 },
+        '新竹': { month: 1400, base: (1400 / 4) / 6.55 }
+    };
+    const dayModifiers = [0.45, 0.55, 0.70, 0.70, 1.20, 1.55, 1.40];
+    const weekDayNames = ['一', '二', '三', '四', '五', '六', '日'];
+
+    // 完整的精細店務下拉清單
+    const defectListOptions = [
+        "先開 LINE Work 確認本日布達與昨日人員交代 (6月新增)",
+        "早班開班：照明、空調、香氛、音樂、電腦開店前就位",
+        "早班零用金、POS機結帳與發票可結帳功能確認",
+        "門面查核：檢查門片玻璃及全店所有鏡面乾淨無指紋",
+        "檯面除塵：收銀檯、展示桌櫃、中島櫃檯面灰塵清理",
+        "門口清潔：清除門口垃圾、落葉、紙屑、菸蒂",
+        "地面與細部：更衣間、陳列下方、鞋子周圍地面灰塵玻璃",
+        "範圍拖地：完成地下室、後倉、休息室常態掃地拖地",
+        "擺設定位：擦拭玻璃櫥窗鏡子，飲料架擺放定點位置",
+        "陳列更新：檯面整理更換人台模特兒 ＆ OOTD 拍照",
+        "社群發布：14:00前完成更換人台與OOTD上傳",
+        "社群回復：每日回覆 IG 門市訊息 ＆ 商品照上傳完成",
+        "任務執行：確實落實並完成每日週交辦任務",
+        "【每週三耗材限額】小袋(紙或塑膠)不足 600 個",
+        "【每週三耗材限額】中袋-大袋不足 400 個",
+        "【每週三耗材限額】發票紙捲/信用卡簽單不足 10 捲",
+        "【每週三備用金】門市備用金零錢不足 10,000 元",
+        "【每週三常駐款】項鍊不足 15 款 ｜ 包包不足 5 款有貨",
+        "【每週三商品反查】常駐商品與 A 級缺貨未回報主倉",
+        "【每週三飾品反查】包包/帽子/大腸圈/皮帶不足未回報",
+        "【6月新增社群】本日門市限動未發滿 5 篇以上",
+        "【6月新增社群】本日小盒子與社群未回覆顧客訊息",
+        "【每日傍晚巡查】18:00-19:00未確認補貨髮夾/飾品/皮帶",
+        "【每日現場巡查】未隨手清理現場死角灰塵髒污與清潔",
+        "【庫存盤點整理】確認庫存有未上架商品 / 尺寸未歸位",
+        "【晚班閉店流程】打包櫃台與廁所垃圾 / 晚班零用金結算",
+        "【晚班大離場】關閉燈光冷氣音樂 / 拔起香氛音響與香氛線",
+        "【晚班大離場】電腦關機 / 延長線主開關確認關閉 / 飲料架收回",
+        "【主管與Rita填寫】主管當日未確認或未回覆各店日回報",
+        "【主管與Rita填寫】主管當日未到店或未遠端檢查店務流程",
+        "【週一專屬交辦】未檢查補商品標籤或陳列未更改拍照",
+        "【週一專屬交辦】未落實掃廁所大掃除加強門店清潔",
+        "【週二專屬交辦】進貨上架速度過慢 / 庫存未即時整理",
+        "【週三專屬交辦】未於週三確認備品/飾品/耗材水位",
+        "【週四專屬交辦】進貨未確實上架或後倉整理未歸位",
+        "【週五專屬交辦】未重複核對標籤正確性或放任未上架商品",
+        "其他雲端被登記之店務維護缺失項目"
+    ];
+
+    window.onload = function() {
+        document.getElementById('submitDate').value = today.toISOString().split('T')[0];
+        const lastSunday = new Date();
+        lastSunday.setDate(today.getDate() - today.getDay());
+        document.getElementById('evaluationDate').value = lastSunday.toISOString().split('T')[0];
+        checkCharLength();
+    };
+
+    function checkCharLength() {
+        const text = document.getElementById('market_report_text').value;
+        document.getElementById('charCountDisplay').innerText = text.length;
+        const label = document.getElementById('charStatusLabel');
+        if (text.length >= 50) {
+            label.innerText = "🟢 已達50字標準 (核發 10 分)";
+            label.style.color = "green";
+        } else {
+            label.innerText = `❌ 字數未達 50 字標準 (目前缺 ${50 - text.length} 字，此小項不給分)`;
+            label.style.color = "red";
+        }
+    }
+
+    // 動態新增缺失欄位列
+    function addDefectRow() {
+        document.getElementById('noDefectNotice').style.display = 'none';
+        const tbody = document.getElementById('defectTableBody');
+        const tr = document.createElement('tr');
+        
+        // 生成日期選項
+        let dateOptionsHtml = weekDayNames.map((day, idx) => `<option value="星期${day}">星期${day}</option>`).join('');
+        // 生成缺失清單選項
+        let defectOptionsHtml = defectListOptions.map(desc => `<option value="${desc}">${desc}</option>`).join('');
+
+        tr.innerHTML = `
+            <td><select class="def-date">${dateOptionsHtml}</select></td>
+            <td><select class="def-shop"><option value="中山">中山店</option><option value="南西">南西店</option><option value="中原">中原店</option><option value="新竹">新竹店</option></select></td>
+            <td><select class="def-desc" style="text-align:left;">${defectOptionsHtml}</select></td>
+            <td>
+                <select class="def-punish" style="color:#b71c1c; font-weight:bold;">
+                    <option value="1.5">🔴 未施作項目 (-1.5分)</option>
+                    <option value="1.0">🟡 有施作但未達標 (-1.0分)</option>
+                </select>
+            </td>
+            <td><button class="btn-row-del" onclick="deleteDefectRow(this)">移除</button></td>
+        `;
+        tbody.appendChild(tr);
+    }
+
+    function deleteDefectRow(btn) {
+        btn.closest('tr').remove();
+        const tbody = document.getElementById('defectTableBody');
+        if(tbody.children.length === 0) {
+            document.getElementById('noDefectNotice').style.display = 'block';
+        }
+    }
+
+    function runZbcsmadeStaffKpiV5() {
+        const currentWeek = document.getElementById('weekSelect').value;
+        const staffName = document.getElementById('staffName').value;
+        const homeShop = document.getElementById('homeShop').value;
+
+        // --- 行政時效大限扣分 ---
+        const evalDateVal = document.getElementById('evaluationDate').value;
+        const submitDateVal = document.getElementById('submitDate').value;
+        let delayDays = 0, delayDeduction = 0;
+        let delayMsg = "✅ 符合次週一前行政時效大限";
+
+        if(evalDateVal && submitDateVal) {
+            const evalDateObj = new Date(evalDateVal);
+            const submitDateObj = new Date(submitDateVal);
+            const limitDateObj = new Date(evalDateObj);
+            limitDateObj.setDate(limitDateObj.getDate() + 1);
+            const timeDiff = submitDateObj.getTime() - limitDateObj.getTime();
+            if (timeDiff > 0) {
+                delayDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                delayDeduction = delayDays * 2.5;
+                delayMsg = `⚠️ 延遲填表扣分：已延誤 ${delayDays} 天提交 ➔ 強制扣除 ${delayDeduction.toFixed(1)} 分！`;
+            }
+        }
+
+        // 天氣補償
+        const rainDays = parseInt(document.getElementById('rainyDaysDisplay').innerText) || 0;
+        const weatherBonus = rainDays * 0.02;
+
+        // 一、個人排班與業績 (40分)
+        let activeWorkingDays = 0, totalVolRate = 0, sumUpt = 0, uptDaysCount = 0;
+        let supportDays = 0, nanxiSupportDays = 0;
+        let attendanceLogs = [];
+
+        const friAttend = document.getElementById('attend_5').checked;
+        const satAttend = document.getElementById('attend_6').checked;
+        const sunAttend = document.getElementById('attend_7').checked;
+        let weekendBonus = (friAttend && satAttend && sunAttend) ? 2.5 : 0;
+
+        for (let i = 1; i <= 7; i++) {
+            const isAttended = document.getElementById(`attend_${i}`).checked;
+            if (isAttended) {
+                activeWorkingDays++;
+                const currentShop = document.getElementById(`shop_${i}`).value;
+                const dailyVol = parseFloat(document.getElementById(`vol_${i}`).value) || 0;
+                const dailyUpt = parseFloat(document.getElementById(`upt_${i}`).value) || 0;
+
+                if (currentShop !== homeShop) {
+                    supportDays++;
+                    if (currentShop === '南西') { supportDays++; nanxiSupportDays++; }
+                }
+
+                const shopBase = storeTargets[currentShop].base;
+                const dailyTarget = shopBase * dayModifiers[i - 1];
+                let dailyRate = dailyTarget > 0 ? (dailyVol / dailyTarget) : 0;
+                dailyRate += weatherBonus;
+                if(dailyRate > 1.0) dailyRate = 1.0;
+                totalVolRate += dailyRate;
+
+                if (dailyUpt > 0) { sumUpt += dailyUpt; uptDaysCount++; }
+                attendanceLogs.push(`     ▪️ 星期${weekDayNames[i-1]}：[${currentShop}店] 團體件數:${dailyVol}件/標準:${dailyTarget.toFixed(1)}件 | UPT:${dailyUpt}`);
+            }
+        }
+
+        let volScore = activeWorkingDays > 0 ? (totalVolRate / activeWorkingDays) * 30 : 0;
+        let avgUpt = uptDaysCount > 0 ? (sumUpt / uptDaysCount) : 0;
+        let uptScorePool = 10;
+        if (avgUpt < 2.0) uptScorePool = 5.0;
+        else if (avgUpt >= 2.0 && avgUpt < 2.2) uptScorePool = 7.5;
+        else if (avgUpt >= 2.2 && avgUpt < 2.4) uptScorePool = 9.0;
+
+        let total_score_one = volScore + uptScorePool + (supportDays * 1.0) + weekendBonus;
+
+        // 二、新版動態缺失反查運算 (滿分 30分)
+        const defectRows = document.querySelectorAll('#defectTableBody tr');
+        let totalDefectDeduction = 0;
+        let unexecutedCount = 0; // 未施作 1.5
+        let subStandardCount = 0; // 未達標 1.0
+        let defectReportLogs = [];
+
+        defectRows.forEach(row => {
+            const dDate = row.querySelector('.def-date').value;
+            const dShop = row.querySelector('.def-shop').value;
+            const dDesc = row.querySelector('.def-desc').value;
+            const dPunish = parseFloat(row.querySelector('.def-punish').value) || 0;
+
+            totalDefectDeduction += dPunish;
+            if(dPunish === 1.5) unexecutedCount++;
+            if(dPunish === 1.0) subStandardCount++;
+
+            defectReportLogs.push(`     ⚠️ [${dDate} - ${dShop}] 缺失：${dDesc} ➔ 判定扣 ${dPunish} 分`);
+        });
+
+        // 加上休息時段違規扣分（若違規直接從本大項多扣 1 分）
+        if(document.getElementById('break_time_status').value === "違規") {
+            totalDefectDeduction += 1.0;
+            defectReportLogs.push(`     ⚠️ [排班紀律違規] 同仁未於 19:00 前完全休息完畢 ➔ 扣 1 分`);
+        }
+
+        let dutyScore = 30 - totalDefectDeduction;
+        if(dutyScore < 0) dutyScore = 0;
+
+        // 主管核查欺報分 (扣總分 1.5/項)
+        const fraudItemsCount = parseInt(document.getElementById('fraud_items_count').value) || 0;
+        let fraudDeduction = fraudItemsCount * 1.5;
+
+        // 三、出席日社群行銷與市場自述
+        let socialMarketScore = 0;
+        let sc_msg = "";
+        let text_report = document.getElementById('market_report_text').value;
+
+        if(activeWorkingDays > 0) {
+            let sc_base = 10;
+            if(!document.getElementById('sc_posts_done').checked) sc_base -= 5;
+            if(!document.getElementById('sc_box_done').checked) sc_base -= 5;
+            
+            let report_score = 0;
+            if (text_report.length >= 50) {
+                report_score = 10;
+                sc_msg = "✅ 自述內容量符合 50 字大限，成功發放 10 分滿分！";
+            } else {
+                report_score = 0;
+                sc_msg = `❌ 自述內容量未達 50 字限制 (目前僅 ${text_report.length} 字)，此自述項直接以 0 分核算。`;
+            }
+            socialMarketScore = sc_base + report_score;
+        }
+
+        // 四、主管綜合評定給分 (10% - 週一對談)
+        const m_attitude = parseFloat(document.getElementById('manager_attitude_score').value) || 0;
+        const m_study = parseFloat(document.getElementById('manager_study_score').value) || 0;
+        let managerTotalScore = m_attitude + m_study;
+
+        // 總得分匯總
+        let totalScore = total_score_one + dutyScore + socialMarketScore + managerTotalScore - fraudDeduction - delayDeduction;
+        if (totalScore > 100) totalScore = 100;
+        if (totalScore < 0) totalScore = 0;
+
+        let grade = "C (需高度加強，列入不適任輔導名單)";
+        if (totalScore >= 92) grade = "A+ (卓越優秀，店務與業績完美落實)";
+        else if (totalScore >= 85) grade = "A (標準正常達標)";
+        else if (totalScore >= 75) grade = "B (部分日常職責需改進)";
+        else if (totalScore >= 70) grade = "C+ (績效落後警告)";
+
+        document.getElementById('resWeek').innerText = currentWeek;
+        document.getElementById('totalScore').innerText = totalScore.toFixed(1);
+        document.getElementById('gradeText').innerText = grade;
+        document.getElementById('resultArea').style.display = "block";
+
+        // 生成結構化複製文字
+        let text = `📊 【Zbcsmade 正職同仁綜合職責週度考核自評報告 V5】\n`;
+        text += `👤 同仁姓名：${staffName}  |  🏠 編制主屬：${homeShop}店\n`;
+        text += `📅 考核週期：${currentWeek}  |  📬 自評繳交日：${submitDateVal || '未填'}\n`;
+        text += `⏰ 行政時效查核：${delayMsg}\n`;
+        text += `====================================\n`;
+        text += `1️⃣ 個人出席班表與業績數據管控：${total_score_one.toFixed(1)} 分 (滿分40+外加分)\n`;
+        attendanceLogs.forEach(log => { text += `${log}\n`; });
+        text += `   - 當週出勤天數：${activeWorkingDays} 天 | 團體平均 UPT：${avgUpt.toFixed(2)}\n`;
+        if(weekendBonus > 0) text += `   - ✨ 週末獎勵：五六日三天皆配合出勤上班，考核外加 +2.5 分\n`;
+        if(supportDays > 0) text += `   - 🚗 支援獎勵：完成跨店/高壓南西支援，外加 +${((supportDays*1)+(nanxiSupportDays*0.5)).toFixed(1)} 分\n`;
+        
+        text += `\n2️⃣ 6/1新制·雲端缺失動態反查明細：${dutyScore.toFixed(1)} 分 (滿分30)\n`;
+        if(defectRows.length > 0 || document.getElementById('break_time_status').value === "違規") {
+            defectReportLogs.forEach(log => { text += `${log}\n`; });
+            text += `   - 常態缺失統計：未施作 ${unexecutedCount} 項｜未達標 ${subStandardCount} 項 ➔ 共扣除 -${totalDefectDeduction} 分\n`;
+        } else {
+            text += `   - ✅ 雲端核對結果：當週在雲端完全無任何店務維護缺失紀錄，取得滿分 30 分！\n`;
+        }
+        text += `   - 當週共同閉店同仁：${document.getElementById('closing_staff_names').value}\n`;
+        text += `   - 當日同仁休息時段狀態：${document.getElementById('break_time_status').value === '正常' ? '全員均在 19:00 前完成休息' : '❌ 發生逾時休息違規'}\n`;
+        if(fraudItemsCount > 0) {
+            text += `   🚨 【反查欺報重懲警告】：經總部抽查發現隱瞞 ${fraudItemsCount} 項缺失未報，強制扣除考績總分 -${fraudDeduction} 分！\n`;
+        }
+
+        text += `\n3️⃣ 出席日分店社群行銷與市場觀察報告：${socialMarketScore.toFixed(1)} 分 (滿分20)\n`;
+        text += `   - 📱 6月分店限動發布 (5篇+)：${document.getElementById('sc_posts_done').checked ? '✅已達成' : '❌未完成扣分'}\n`;
+        text += `   - 📱 6月社群小盒子訊息回覆：${document.getElementById('sc_box_done').checked ? '✅已達成' : '❌未完成扣分'}\n`;
+        text += `   - 🧭 市場綜合心得自述判定：${sc_msg}\n`;
+        text += `   - 📝 同仁申報自述與反饋內容：\n     ${text_report}\n`;
+
+        text += `\n4️⃣ 學習進度與核心工作態度 (10% 主管覆核週一索取)：${managerTotalScore.toFixed(1)} 分 (滿分10)\n`;
+        text += `   - 主管評定服務熱忱/協作態度：${m_attitude} 分 ｜ 學習與反饋積極度：${m_study} 分\n`;
+        text += `   - ✍️ 主管週一會審開會期許與評語：${document.getElementById('manager_review_note').value}\n`;
+        text += `------------------------------------\n`;
+        text += `🎯 當週個人核心最終總得分：${totalScore.toFixed(1)} 分 ➔ 綜合等第：${grade}\n`;
+        text += `💡 提示：本表單 V5 終極版缺失動態加權運算系統已就位。請每週一主動與核心主管索取第四大項分數，確認無誤後複製報告。`;
+
+        document.getElementById('summaryOutput').value = text;
+    }
+
+    function copyKpiText() {
+        const txt = document.getElementById('summaryOutput');
+        txt.select();
+        document.execCommand('copy');
+        alert('Zbcsmade 正職 V5 雙軌重懲防弊版報告已成功複製！');
+    }
+</script>
+</body>
+</html>
